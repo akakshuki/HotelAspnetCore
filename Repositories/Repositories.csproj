@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\" />
+    <ProjectReference Include="..\Data\Data.csproj" />
   </ItemGroup>
 
 </Project>

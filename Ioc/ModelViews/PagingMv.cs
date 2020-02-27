@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ioc.Serive
+namespace Repository.ModelViews
 {
-    interface IRepository<T> where  T : class
+    class PagingMv
     {
-
     }
 }

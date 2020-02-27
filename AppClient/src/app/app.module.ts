@@ -5,14 +5,18 @@ import * as bootstrap from 'bootstrap';
 import * as $ from 'jquery';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from '../app/components/header/header.component';
+import { FooterComponent } from '../app/components/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ioc
+namespace Repositories
 {
     public class Class1
     {

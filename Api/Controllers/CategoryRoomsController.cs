@@ -2,50 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Data.EF;
 using Data.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-using Repository.DTO;
+using UnitOfWork;
 
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoryRoomsController : ControllerBase
     {
-        private ICategoryRoomService _categoryRomRoomService;
+        private IUnitOfWork _unitOfWork;
 
-
-        public CategoryController(ICategoryRoomService categoryRomRoomService)
+        public CategoryRoomsController(IUnitOfWork unitOfWork)
         {
-            _categoryRomRoomService = categoryRomRoomService;
+            _unitOfWork = unitOfWork;
         }
 
-        // GET: api/Category
+        // GET: api/CategoryRooms
         [HttpGet]
         public IEnumerable<CategoryRoom> Get()
         {
-            var data = _categoryRomRoomService.GetAll();
-
-            return data.ToList();
+            return _unitOfWork.CategoryRooms.Get();
         }
 
-        // GET: api/Category/5
+        // GET: api/CategoryRooms/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/Category
+        // POST: api/CategoryRooms
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT: api/Category/5
+        // PUT: api/CategoryRooms/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

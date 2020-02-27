@@ -6,7 +6,7 @@ using Repository.Services;
 
 namespace Repository.Repositories
 {
-    class DBFactory :IDBFactory
+    public class DBFactory :IDBFactory
     {
         private HotelDataContext _data;
 

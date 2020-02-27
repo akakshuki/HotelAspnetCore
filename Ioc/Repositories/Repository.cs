@@ -9,7 +9,7 @@ using Repository.Services;
 
 namespace Repository.Repositories
 {
-    class Repository<T> : IRepository<T> where T : class
+   public class Repository<T> : IRepository<T> where T : class
     {
         internal HotelDataContext _context;
         internal DbSet<T> _dbSet;

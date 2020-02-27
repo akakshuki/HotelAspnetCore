@@ -7,7 +7,7 @@ using Repository.Services;
 
 namespace Repository.Repositories
 {
-    class Uow : IUow
+   public class Uow : IUow
     {
         private HotelDataContext _data;
 

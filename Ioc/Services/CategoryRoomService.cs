@@ -5,12 +5,9 @@ using Data.Entities;
 using Repository.Interfaces;
 using Repository.Services;
 
-namespace Repository.DTO
+namespace Repository.Services
 {
-    public interface ICategoryRoomService : IService<CategoryRoom>
-    {
-
-    }
+  
 
     public class CategoryRoomService  : Service<CategoryRoom>, ICategoryRoomService
     {
@@ -18,6 +15,18 @@ namespace Repository.DTO
 
         public CategoryRoomService(IUow uow, IRepository<CategoryRoom> repository): base (uow, repository)
         {
+        }
+
+        public IEnumerable<CategoryRoom> GetLastedCategoryRooms()
+        {
+            try
+            {
+                return GetAll();
+            }
+            catch (Exception e)
+            {
+                return new List<CategoryRoom>();
+            }
 
         }
     }

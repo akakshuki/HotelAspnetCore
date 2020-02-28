@@ -29,9 +29,9 @@ namespace Api.Controllers
 
         // GET: api/CategoryRooms/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public CategoryRoom Get(int id)
         {
-            return "value";
+            return _unitOfWork.CategoryRooms.GetByID(id);
         }
 
         // POST: api/CategoryRooms
@@ -52,4 +52,6 @@ namespace Api.Controllers
         {
         }
     }
+
+    
 }

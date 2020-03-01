@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO.Pipes;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using AppAdmin.Models.DTOs;
+﻿using AppAdmin.Models.DTOs;
 using AppAdmin.Services;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace AppAdmin.Models.DAO
 {
@@ -14,10 +12,7 @@ namespace AppAdmin.Models.DAO
     {
         private ApiService _api = null;
 
-        public CategoryRoomDao()
-        {
-           _api = new ApiService();
-        }
+        public CategoryRoomDao() => _api = new ApiService();
 
         public async Task<List<CategoryRoomMv>> GeList()
         {
@@ -35,16 +30,9 @@ namespace AppAdmin.Models.DAO
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                
             }
 
             return list;
         }
     }
-
-
 }
-
-
-
-

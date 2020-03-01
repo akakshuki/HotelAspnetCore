@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace Data.Entities
 {
-    class AppRole : IdentityRole<Guid>
+    internal class AppRole : IdentityRole<Guid>
     {
         public string Description { get; set; }
     }

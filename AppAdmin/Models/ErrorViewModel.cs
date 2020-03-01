@@ -1,5 +1,3 @@
-using System;
-
 namespace AppAdmin.Models
 {
     public class ErrorViewModel

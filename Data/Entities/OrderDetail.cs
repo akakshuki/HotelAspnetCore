@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Data.Entities
 {
@@ -13,9 +11,7 @@ namespace Data.Entities
         public decimal Amount { get; set; }
         public DateTime DateRequest { get; set; }
 
-
         public Order Order { get; set; }
         public Service Service { get; set; }
-
-        }
+    }
 }

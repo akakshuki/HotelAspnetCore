@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Data.EF;
+﻿using Data.EF;
 using Microsoft.EntityFrameworkCore;
 using StructureMap;
-using StructureMap.Configuration.DSL;
-using StructureMap.Graph;
 using UnitOfWork;
 
 namespace Api.Configuration
@@ -23,13 +17,13 @@ namespace Api.Configuration
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
 
-                    //This line of code is just directions telling StructureMap 
-                    //where to look for DAL models.  
+                    //This line of code is just directions telling StructureMap
+                    //where to look for DAL models.
                     //Typically, my DAL code lives in different class library
                     scan.AssemblyContainingType<HotelDataContext>();
 
-                    //To connect implementations to our open generic type of IRepository, 
-                    //we use the ConnectImplementationsToTypesClosing method.  
+                    //To connect implementations to our open generic type of IRepository,
+                    //we use the ConnectImplementationsToTypesClosing method.
                     scan.ConnectImplementationsToTypesClosing(typeof(IRepository<>));
                 });
             //For<IExample>().Use<Example>();
@@ -39,6 +33,6 @@ namespace Api.Configuration
             For(typeof(IRepository<>)).Use(typeof(BaseRepository<>));
         }
 
-        #endregion
+        #endregion Constructors and Destructors
     }
 }

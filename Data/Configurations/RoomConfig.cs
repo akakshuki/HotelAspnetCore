@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Data.Entities;
+﻿using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Data.Configurations
 {
-    class RoomConfig : IEntityTypeConfiguration<Room>
+    internal class RoomConfig : IEntityTypeConfiguration<Room>
     {
         public void Configure(EntityTypeBuilder<Room> builder)
         {
@@ -20,9 +17,6 @@ namespace Data.Configurations
             builder.HasOne<CategoryRoom>(x => x.CategoryRoom)
                 .WithMany(x => x.Rooms)
                 .HasForeignKey(x => x.CategoryRoomId);
-
-
-
         }
     }
 }

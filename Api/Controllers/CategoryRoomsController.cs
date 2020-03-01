@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.Models.Dao;
+﻿using Api.Models.Dao;
 using Api.Models.DTOs;
 using AutoMapper;
-using Data.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 using UnitOfWork;
 
 namespace Api.Controllers
@@ -19,11 +15,11 @@ namespace Api.Controllers
         private IUnitOfWork _unitOfWork;
 
         private readonly IMapper _mapper;
-        public CategoryRoomsController(IUnitOfWork unitOfWork, IMapper mapper )
+
+        public CategoryRoomsController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-
         }
 
         // GET: api/CategoryRooms
@@ -32,7 +28,12 @@ namespace Api.Controllers
         {
             try
             {
-                return new CategoryRoomDao(_unitOfWork, _mapper).GetAll();
+                var data = new CategoryRoomDao(_unitOfWork, _mapper).GetAll();
+                if (data == null)
+                {
+                    return NotFound();
+                }
+                return data;
             }
             catch (Exception e)
             {
@@ -43,15 +44,29 @@ namespace Api.Controllers
 
         // GET: api/CategoryRooms/5
         [HttpGet("{id}", Name = "Get")]
-        public CategoryRoom Get(int id)
+        public ActionResult<CategoryRoomMv> Get(int id)
         {
-            return _unitOfWork.CategoryRooms.GetByID(id);
+            try
+            {
+                var data = new CategoryRoomDao(_unitOfWork, _mapper).GetById(id);
+                if (data == null)
+                {
+                    return NotFound();
+                }
+                return data;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
         }
 
         // POST: api/CategoryRooms
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            
         }
 
         // PUT: api/CategoryRooms/5
@@ -66,6 +81,4 @@ namespace Api.Controllers
         {
         }
     }
-
-    
 }

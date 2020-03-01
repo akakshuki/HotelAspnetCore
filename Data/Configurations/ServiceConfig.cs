@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Data.Entities;
+﻿using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Data.Configurations
 {
-    class ServiceConfig : IEntityTypeConfiguration<Service>
+    internal class ServiceConfig : IEntityTypeConfiguration<Service>
     {
         public void Configure(EntityTypeBuilder<Service> builder)
         {
@@ -20,7 +17,6 @@ namespace Data.Configurations
             builder.HasOne(x => x.CategoryService)
                 .WithMany(x => x.Services)
                 .HasForeignKey(x => x.CategoryServiceId);
-
         }
     }
 }

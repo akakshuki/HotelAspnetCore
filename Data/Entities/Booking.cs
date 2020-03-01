@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Data.Entities
 {
@@ -16,12 +14,8 @@ namespace Data.Entities
         public string SecretCode { get; set; }
         public string Status { get; set; }
         public decimal Amount { get; set; }
-        
+
         public Room Room { get; set; }
         public Guest Guest { get; set; }
-
-
-
-
     }
 }

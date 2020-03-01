@@ -35,12 +35,17 @@ namespace UnitOfWork
             }
         }
 
-        public IRepository<Room> Rooms { get
+        public IRepository<Room> Rooms
         {
-            return _rooms ??
-                   (_rooms = new BaseRepository<Room>(_dbContext));
-        } }
-        public IRepository<Service> Services {
+            get
+            {
+                return _rooms ??
+                       (_rooms = new BaseRepository<Room>(_dbContext));
+            }
+        }
+
+        public IRepository<Service> Services
+        {
             get
             {
                 return _services ??

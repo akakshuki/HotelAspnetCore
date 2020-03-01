@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Data.Enums;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Data.Enums;
 
 namespace Data.Entities
 {
@@ -14,8 +13,7 @@ namespace Data.Entities
         public Guid EmployeeId { get; set; }
         public decimal TotalAmount { get; set; }
         public Booking Booking { get; set; }
-        
-        public List<OrderDetail> OrderDetails { get; set; }
 
+        public List<OrderDetail> OrderDetails { get; set; }
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Data.Configurations;
+﻿using Data.Configurations;
 using Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Data.EF
 {
@@ -12,22 +10,18 @@ namespace Data.EF
     {
         public HotelDataContext(DbContextOptions options) : base(options)
         {
-
         }
 
         public HotelDataContext()
         {
-           
         }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             //config with fluent api
             modelBuilder.ApplyConfiguration(new AppRoleConfig());
             modelBuilder.ApplyConfiguration(new AppUserConfig());
-           
+
             modelBuilder.ApplyConfiguration(new BookingConfig());
             modelBuilder.ApplyConfiguration(new CategoryRoomConfig());
             modelBuilder.ApplyConfiguration(new CategoryServiceConfig());
@@ -37,15 +31,12 @@ namespace Data.EF
             modelBuilder.ApplyConfiguration(new RoomConfig());
             modelBuilder.ApplyConfiguration(new ServiceConfig());
 
-
             //setting IDentity
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
             modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new { x.RoleId, x.UserId });
             modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
-            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims").HasKey(x=>x.Id);
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims").HasKey(x => x.Id);
             modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
-
-
         }
 
         public DbSet<CategoryRoom> CategoryRooms { get; set; }
@@ -55,8 +46,7 @@ namespace Data.EF
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-    
-        public DbSet<OrderDetail> OrderDetails { get; set; }
 
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

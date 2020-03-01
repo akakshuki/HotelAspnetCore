@@ -6,8 +6,9 @@ namespace UnitOfWork
     {
         IRepository<CategoryRoom> CategoryRooms { get; }
         IRepository<CategoryService> CategoryServices { get; }
-        IRepository<Room>Rooms { get; }
+        IRepository<Room> Rooms { get; }
         IRepository<Service> Services { get; }
+
         void Commit();
     }
 }

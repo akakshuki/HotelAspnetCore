@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.Models.DTOs;
+﻿using Api.Models.DTOs;
 using AutoMapper;
 using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 using UnitOfWork;
 
 namespace Api.Models.Dao
@@ -21,20 +19,12 @@ namespace Api.Models.Dao
             _mapper = mapper;
         }
 
-    
-
         public void Create(CategoryRoomMv data)
         {
-            var categoryRoom = new CategoryRoom()
-            {
-                Name = data.Name,
-                Description = data.Description,
-                Price = data.Price,
-
-            };
+            var categoryRoom = _mapper.Map<CategoryRoom>(data);
             try
             {
-              _unitOfWork.CategoryRooms.Insert(categoryRoom);
+                _unitOfWork.CategoryRooms.Insert(categoryRoom);
             }
             catch (Exception e)
             {
@@ -45,10 +35,16 @@ namespace Api.Models.Dao
 
         public ActionResult<IEnumerable<CategoryRoomMv>> GetAll()
         {
-            var categoryRooms =_unitOfWork.CategoryRooms.Get();
+            var categoryRooms = _unitOfWork.CategoryRooms.Get();
             var list = _mapper.Map<List<CategoryRoomMv>>(categoryRooms);
             return list;
+        }
 
+        public ActionResult<CategoryRoomMv> GetById(int id)
+        {
+            var data = _unitOfWork.CategoryRooms.GetByID(id);
+            var categoryRoom = _mapper.Map<CategoryRoomMv>(data);
+            return categoryRoom;
         }
     }
 }

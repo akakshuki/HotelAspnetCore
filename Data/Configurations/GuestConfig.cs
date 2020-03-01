@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Data.Entities;
+﻿using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Data.Configurations
 {
-    class GuestConfig : IEntityTypeConfiguration<Guest>
+    internal class GuestConfig : IEntityTypeConfiguration<Guest>
     {
         public void Configure(EntityTypeBuilder<Guest> builder)
         {
@@ -19,9 +16,6 @@ namespace Data.Configurations
             builder.Property(x => x.Phone).HasMaxLength(10).IsRequired();
             builder.Property(x => x.Email).HasMaxLength(300).IsUnicode(false).IsRequired();
             builder.Property(x => x.IdentityNo).HasMaxLength(9).IsRequired();
-
-            
-
         }
     }
 }

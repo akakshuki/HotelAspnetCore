@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Data.Entities
 {
@@ -14,6 +12,5 @@ namespace Data.Entities
         public string IdentityNo { get; set; }
 
         public List<Booking> Bookings { get; set; }
-       
     }
 }

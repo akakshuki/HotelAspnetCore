@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AppAdmin.Models.DTOs
+﻿namespace AppAdmin.Models.DTOs
 {
     public class CategoryRoomMv
     {
@@ -11,7 +6,5 @@ namespace AppAdmin.Models.DTOs
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Description { get; set; }
-
-       
     }
 }

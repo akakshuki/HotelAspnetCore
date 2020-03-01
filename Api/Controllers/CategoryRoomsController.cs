@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Models.Dao;
+using Api.Models.DTOs;
+using AutoMapper;
 using Data.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,16 +18,27 @@ namespace Api.Controllers
     {
         private IUnitOfWork _unitOfWork;
 
-        public CategoryRoomsController(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+        public CategoryRoomsController(IUnitOfWork unitOfWork, IMapper mapper )
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
+
         }
 
         // GET: api/CategoryRooms
         [HttpGet]
-        public IEnumerable<CategoryRoom> Get()
+        public ActionResult<IEnumerable<CategoryRoomMv>> Get()
         {
-            return _unitOfWork.CategoryRooms.Get();
+            try
+            {
+                return new CategoryRoomDao(_unitOfWork, _mapper).GetAll();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
         }
 
         // GET: api/CategoryRooms/5

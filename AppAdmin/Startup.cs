@@ -24,6 +24,8 @@ namespace AppAdmin
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,11 +48,13 @@ namespace AppAdmin
 
             app.UseAuthorization();
 
+         
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Login}/{action=Login}");
+                    pattern: "{controller=Manage}/{action=Home}");
             });
         }
     }

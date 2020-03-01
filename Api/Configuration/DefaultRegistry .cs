@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Data.EF;
 using Microsoft.EntityFrameworkCore;
+using StructureMap;
 using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
 using UnitOfWork;

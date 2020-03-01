@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Configuration;
 using AutoMapper;
 using Data.EF;
 using Data.Entities;
@@ -40,8 +41,9 @@ namespace Api
 
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
+            services.ConfigureCors();
 
-
+            services.AddAutoMapper(typeof(Startup));
 
         }
 
@@ -58,6 +60,8 @@ namespace Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

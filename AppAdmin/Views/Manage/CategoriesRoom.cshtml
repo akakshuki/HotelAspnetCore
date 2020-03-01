@@ -1,0 +1,12 @@
+﻿@model Task<List<AppAdmin.Models.DTOs.CategoryRoomMv>>
+@{
+    ViewData["Title"] = "CategoriesRoom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CategoriesRoom</h1>
+@foreach (var item in await @Model)
+{
+    <p>@item.Name</p>
+    <p>@item.Price</p>
+}

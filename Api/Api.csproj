@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">
@@ -14,16 +14,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
-    <PackageReference Include="StructureMap.MVC5" Version="3.1.1.134" />
+    <PackageReference Include="StructureMap.Microsoft.DependencyInjection" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
     <ProjectReference Include="..\UnitOfWork\UnitOfWork.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\Mappings\" />
   </ItemGroup>
 
 

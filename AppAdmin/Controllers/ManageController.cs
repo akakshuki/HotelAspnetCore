@@ -1,6 +1,8 @@
-﻿using AppAdmin.Models.DAO;
+﻿using System.ComponentModel.DataAnnotations;
+using AppAdmin.Models.DAO;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using AppAdmin.Models.DTOs;
 
 namespace AppAdmin.Controllers
 {
@@ -18,6 +20,37 @@ namespace AppAdmin.Controllers
         {
             var data = await new CategoryRoomDao().GeList();
             return View(data);
+        }
+
+        [HttpGet]
+        public IActionResult CreateCategoryRoom()
+        {
+           
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ViewResult> CreateCategoryRoom(CategoryRoomMv category)
+        {
+            if (ModelState.IsValid)
+            {
+                var res = await new CategoryRoomDao().CreateCategory(category);
+                if (res.IsSuccessStatusCode)
+                {
+                    var data = await new CategoryRoomDao().GeList();
+                    return View("CategoriesRoom",data);
+                }
+                else
+                {
+                    return View();
+                }
+               
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         #endregion CategoryRoom

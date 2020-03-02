@@ -8,7 +8,8 @@ namespace AppAdmin.Services
         public HttpClient ApiClient()
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:5001/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.BaseAddress = new Uri("https://localhost:44333/");
             return client;
         }
     }

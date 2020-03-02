@@ -19,9 +19,14 @@ namespace Api.Models.Dao
             _mapper = mapper;
         }
 
-        public void Create(CategoryRoomMv data)
+        public  void Create(CategoryRoomMv data)
         {
-            var categoryRoom = _mapper.Map<CategoryRoom>(data);
+           var categoryRoom = new CategoryRoom()
+           {
+               Name = data.Name,
+               Price = data.Price,
+               Description = data.Description
+           };
             try
             {
                 _unitOfWork.CategoryRooms.Insert(categoryRoom);

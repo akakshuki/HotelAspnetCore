@@ -3,8 +3,11 @@ using AppAdmin.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AppAdmin.Models.DAO
 {
@@ -33,6 +36,24 @@ namespace AppAdmin.Models.DAO
             }
 
             return list;
+        }
+
+        public async Task<HttpResponseMessage> CreateCategory(CategoryRoomMv category)
+        {
+            HttpClient client = _api.ApiClient();
+
+            string data = JsonConvert.SerializeObject(
+                new
+                {
+                    data = category
+                });
+            var content = new StringContent(data.ToString(), Encoding.UTF8, "application/json");
+
+            var postTask = await client.PostAsync("api/CategoryRooms", content);
+
+            return  postTask;
+
+
         }
     }
 }

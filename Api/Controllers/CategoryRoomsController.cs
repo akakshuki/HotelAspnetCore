@@ -4,6 +4,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using Data.Entities;
+using Newtonsoft.Json;
 using UnitOfWork;
 
 namespace Api.Controllers
@@ -64,9 +66,18 @@ namespace Api.Controllers
 
         // POST: api/CategoryRooms
         [HttpPost]
-        public void Post([FromBody] string value)
+       public void Post(CategoryRoomMv category)
         {
-            
+            try
+            {
+                //var result = JsonConvert.DeserializeObject<CategoryRoomMv>(category);
+                new CategoryRoomDao(_unitOfWork, _mapper).Create(category);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                
+            }
         }
 
         // PUT: api/CategoryRooms/5

@@ -13,7 +13,7 @@
         <!-- Sidebar -->
         @{
             await Html.RenderPartialAsync("_LayoutNavigate");
-           
+
         }
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
@@ -34,5 +34,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
+    @RenderSection("jsFooter", required: false)
 </body>
 </html>

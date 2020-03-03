@@ -30,6 +30,7 @@ namespace Api.Models.Dao
             try
             {
                 _unitOfWork.CategoryRooms.Insert(categoryRoom);
+                _unitOfWork.Commit();
             }
             catch (Exception e)
             {

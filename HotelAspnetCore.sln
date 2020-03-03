@@ -28,9 +28,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AppClient", "AppClient\", "
 		SlnRelativePath = "AppClient\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitOfWork", "UnitOfWork\UnitOfWork.csproj", "{30976CBD-233D-48C8-9125-9D9A3E49FDFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWork", "UnitOfWork\UnitOfWork.csproj", "{30976CBD-233D-48C8-9125-9D9A3E49FDFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAdmin", "AppAdmin\AppAdmin.csproj", "{7FB700C0-1951-4605-A3CC-9454A753EF57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppAdmin", "AppAdmin\AppAdmin.csproj", "{7FB700C0-1951-4605-A3CC-9454A753EF57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

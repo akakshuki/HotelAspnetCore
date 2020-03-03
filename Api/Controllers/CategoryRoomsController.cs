@@ -66,7 +66,7 @@ namespace Api.Controllers
 
         // POST: api/CategoryRooms
         [HttpPost]
-       public void Post(CategoryRoomMv category)
+        public void Post([FromBody]CategoryRoomMv category)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Api.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                
+
             }
         }
 

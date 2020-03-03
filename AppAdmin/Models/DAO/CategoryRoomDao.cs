@@ -17,11 +17,12 @@ namespace AppAdmin.Models.DAO
 
         public CategoryRoomDao() => _api = new ApiService();
 
+        private string url = "api/CategoryRooms";
+
         public async Task<List<CategoryRoomMv>> GeList()
         {
-            List<CategoryRoomMv> list = new List<CategoryRoomMv>();
-            HttpClient client = _api.ApiClient();
-            HttpResponseMessage res = await client.GetAsync("api/CategoryRooms");
+            var list = new List<CategoryRoomMv>();
+            var res = await _api.GetData(url);
             try
             {
                 if (res.IsSuccessStatusCode)
@@ -33,27 +34,45 @@ namespace AppAdmin.Models.DAO
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                throw;
             }
 
             return list;
+
         }
 
         public async Task<HttpResponseMessage> CreateCategory(CategoryRoomMv category)
         {
-            HttpClient client = _api.ApiClient();
+            var postTask = await _api.PostData<CategoryRoomMv>(url, category);
 
-            string data = JsonConvert.SerializeObject(
-                new
-                {
-                    data = category
-                });
-            var content = new StringContent(data.ToString(), Encoding.UTF8, "application/json");
 
-            var postTask = await client.PostAsync("api/CategoryRooms", content);
-
-            return  postTask;
+            return postTask;
 
 
         }
+        public async Task<CategoryRoomMv> GetById(int id)
+        {
+
+            var data = new CategoryRoomMv();
+            var res = await _api.GetDataById(url,id);
+            try
+            {
+                if (res.IsSuccessStatusCode)
+                {
+                    var result = res.Content.ReadAsStringAsync().Result;
+                    data = JsonConvert.DeserializeObject<CategoryRoomMv>(result);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            return data;
+
+
+        }
+
     }
 }

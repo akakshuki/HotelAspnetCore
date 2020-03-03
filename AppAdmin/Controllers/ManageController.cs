@@ -52,7 +52,21 @@ namespace AppAdmin.Controllers
             }
             
         }
+        [HttpGet]
+        public async Task<ViewResult> DetailCategoryRoom(int id)
+        {
+            var data = await new CategoryRoomDao().GetById(id);
+
+            return View(data);
+        }
+
 
         #endregion CategoryRoom
+
+
+        #region Rooms
+
+     
+        #endregion
     }
 }

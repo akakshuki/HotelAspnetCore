@@ -28,7 +28,7 @@
 
                     <td>@item.Name</td>
                     <td>@item.Price</td>
-                    <td>#</td>
+                    <td>@Html.ActionLink("Detail","DetailCategoryRoom", new {id =@item.Id})</td>
                 </tr>
             }
 

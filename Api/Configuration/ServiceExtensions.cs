@@ -9,10 +9,12 @@ namespace Api.Configuration
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
-                    builder => builder.WithOrigins("http://localhost:4434", "http://localhost:4200/", "http://localhost:64906")
+                    builder => builder.AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });
         }
     }
 }
+
+//.WithOrigins("http://localhost:4434", "http://localhost:4200/", "http://localhost:64906")

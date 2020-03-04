@@ -66,30 +66,51 @@ namespace Api.Controllers
 
         // POST: api/CategoryRooms
         [HttpPost]
-        public void Post([FromBody]CategoryRoomMv category)
+        public IActionResult Post([FromBody]CategoryRoomMv category)
         {
             try
             {
                 //var result = JsonConvert.DeserializeObject<CategoryRoomMv>(category);
                 new CategoryRoomDao(_unitOfWork, _mapper).Create(category);
+                return Ok(); 
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-
+                return NotFound() ; 
             }
         }
 
         // PUT: api/CategoryRooms/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] CategoryRoomMv category)
         {
+            try
+            {
+                new CategoryRoomDao(_unitOfWork, _mapper).Update(category);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                new CategoryRoomDao(_unitOfWork, _mapper).Delete(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
         }
     }
 }

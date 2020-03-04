@@ -19,14 +19,14 @@ namespace Api.Models.Dao
             _mapper = mapper;
         }
 
-        public  void Create(CategoryRoomMv data)
+        public void Create(CategoryRoomMv data)
         {
-           var categoryRoom = new CategoryRoom()
-           {
-               Name = data.Name,
-               Price = data.Price,
-               Description = data.Description
-           };
+            var categoryRoom = new CategoryRoom()
+            {
+                Name = data.Name,
+                Price = data.Price,
+                Description = data.Description
+            };
             try
             {
                 _unitOfWork.CategoryRooms.Insert(categoryRoom);
@@ -51,6 +51,43 @@ namespace Api.Models.Dao
             var data = _unitOfWork.CategoryRooms.GetByID(id);
             var categoryRoom = _mapper.Map<CategoryRoomMv>(data);
             return categoryRoom;
+        }
+
+        public void Update(CategoryRoomMv category)
+        {
+            var data = new CategoryRoom()
+            {
+                Id = category.Id,
+                Name = category.Name,
+                Price = category.Price,
+                Description = category.Description
+            };
+            try
+            {
+                _unitOfWork.CategoryRooms.Update(data);
+                _unitOfWork.Commit();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+
+        }
+
+        public void Delete(in int id)
+        {
+            try
+            {
+                _unitOfWork.CategoryRooms.Delete(id);
+                _unitOfWork.Commit();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

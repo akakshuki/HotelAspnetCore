@@ -14,6 +14,7 @@ namespace AppAdmin.Services
         {
             _client = new HttpClient();
             _client.BaseAddress = new Uri("https://localhost:5001/");
+            
            
         }
 
@@ -35,6 +36,12 @@ namespace AppAdmin.Services
         public async Task<HttpResponseMessage> GetDataById(string url, object id)
         {
             var res = await _client.GetAsync(url + "/" + id.ToString());
+            return res;
+        }
+
+        public async Task<HttpResponseMessage> DeleteDataById(string url, object id)
+        {
+            var res = await _client.DeleteAsync(url + "/" + id.ToString());
             return res;
         }
         public async Task<HttpResponseMessage> Update<T>(string url, object id, T data)

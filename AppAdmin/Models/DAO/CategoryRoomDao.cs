@@ -50,6 +50,7 @@ namespace AppAdmin.Models.DAO
 
 
         }
+
         public async Task<CategoryRoomMv> GetById(int id)
         {
 
@@ -74,5 +75,28 @@ namespace AppAdmin.Models.DAO
 
         }
 
+        public async Task Delete(int id)
+        {
+            try
+            {
+                var result = await _api.DeleteDataById(url, id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+
+        public async Task<HttpResponseMessage> UpdateCategory(CategoryRoomMv category)
+        {
+            var update = await _api.Update<CategoryRoomMv>(url, category.Id, category);
+
+
+            return update;
+
+
+        }
     }
 }

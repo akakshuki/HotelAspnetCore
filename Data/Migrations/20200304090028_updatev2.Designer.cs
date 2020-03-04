@@ -4,14 +4,16 @@ using Data.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(HotelDataContext))]
-    partial class HotelDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200304090028_updatev2")]
+    partial class updatev2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

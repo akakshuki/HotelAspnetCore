@@ -9,6 +9,7 @@ namespace Api.Models.Mappings
         public MapperProfile()
         {
             CreateMap<CategoryRoom, CategoryRoomMv>();
+            CreateMap<Room, RoomMv>();
         }
     }
 }

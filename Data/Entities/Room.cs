@@ -5,7 +5,7 @@ namespace Data.Entities
     public class Room
     {
         public int Id { get; set; }
-        public int RoomNo { get; set; }
+        public string RoomNo { get; set; }
         public int CategoryRoomId { get; set; }
         public bool Status { get; set; }
 

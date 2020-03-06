@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
 
 using UnitOfWork;
 
@@ -26,7 +25,6 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
 
             services.AddMvc();
@@ -37,7 +35,6 @@ namespace Api
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
             services.ConfigureCors();
-
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -58,20 +55,17 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
             }
-        
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-       
 
             app.UseAuthorization();
 
             app.UseCors();
 
             app.UseSwagger();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -79,9 +73,8 @@ namespace Api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hotel Api");
             });
-
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Data.Entities
         public DateTime DateRequest { get; set; }
 
         public Order Order { get; set; }
+
         public Service Service { get; set; }
     }
 }

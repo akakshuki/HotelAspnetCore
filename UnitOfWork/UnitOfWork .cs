@@ -12,6 +12,13 @@ namespace UnitOfWork
         private BaseRepository<Room> _rooms;
         private BaseRepository<Service> _services;
 
+
+        private BaseRepository<BookRoom> _bookRooms;
+        private BaseRepository<Guest> _guests;
+        private BaseRepository<Booking> _bookings;
+
+
+
         public UnitOfWork(HotelDataContext dbContext)
         {
             _dbContext = dbContext;
@@ -50,6 +57,31 @@ namespace UnitOfWork
             {
                 return _services ??
                        (_services = new BaseRepository<Service>(_dbContext));
+            }
+        }
+
+        public IRepository<Guest> Guests
+        {
+            get
+            {
+                return _guests ??
+                       (_guests = new BaseRepository<Guest>(_dbContext));
+            }
+        }
+        public IRepository<Booking> Bookings
+        {
+            get
+            {
+                return _bookings ??
+                       (_bookings = new BaseRepository<Booking>(_dbContext));
+            }
+        }
+        public IRepository<BookRoom> BookRooms
+        {
+            get
+            {
+                return _bookRooms ??
+                       (_bookRooms = new BaseRepository<BookRoom>(_dbContext));
             }
         }
 

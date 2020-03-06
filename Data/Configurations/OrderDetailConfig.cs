@@ -16,6 +16,10 @@ namespace Data.Configurations
 
             builder.HasOne(x => x.Order)
                 .WithMany(x => x.OrderDetails)
+                .HasForeignKey(x => x.OrderId);
+
+            builder.HasOne(x => x.Service)
+                .WithMany(x => x.OrderDetails)
                 .HasForeignKey(x => x.ServiceId);
         }
     }

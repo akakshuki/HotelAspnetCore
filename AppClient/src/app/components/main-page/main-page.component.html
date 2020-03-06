@@ -1,1 +1,24 @@
-<p>main-page works!</p>
+<div class="row" id="background">
+    <div class="container pl-5 col-md-4">
+        <h1 class="text-white py-5" id="LogoName">
+            Radisson
+        </h1>
+        <h4 class="text-white">
+            WelCome
+        </h4>
+    </div>
+    <div class="col-md-7 p-5">
+        <div class="card pl-3 shadow-lg" id="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">Let Booking</h5>
+             <form action="" method="post">
+              <div id="poc" class="row m-5">
+                <label for="dateRangePicker" class="col-4 font-weight-bold">Ngày đến</label>
+                <label for="dateRangePicker" class="col-4 font-weight-bold mr-3">Ngày đi</label>
+                <input id="dateRangePicker" style="width: 17rem;" class="px-3 py-1 DateRangePickerInput mb-3" type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
+              </div>
+             </form>
+            </div>
+          </div>
+    </div>
+</div>

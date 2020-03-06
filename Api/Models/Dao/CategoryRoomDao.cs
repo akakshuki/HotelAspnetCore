@@ -4,6 +4,8 @@ using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using UnitOfWork;
 
 namespace Api.Models.Dao
@@ -53,6 +55,7 @@ namespace Api.Models.Dao
             return categoryRoom;
         }
 
+
         public void Update(CategoryRoomMv category)
         {
             var data = new CategoryRoom()
@@ -72,8 +75,6 @@ namespace Api.Models.Dao
                 Console.WriteLine(e);
                 throw;
             }
-
-
         }
 
         public void Delete(in int id)

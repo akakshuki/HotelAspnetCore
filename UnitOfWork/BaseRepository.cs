@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace UnitOfWork
 {
@@ -63,6 +64,12 @@ namespace UnitOfWork
         public virtual void Insert(TEntity entity)
         {
             dbSet.Add(entity);
+        }
+
+        public TEntity InsertData(TEntity entity)
+        {
+             dbSet.Add(entity);
+             return entity;
         }
 
         public virtual void Delete(object id)

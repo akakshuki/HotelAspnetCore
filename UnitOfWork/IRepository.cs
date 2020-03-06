@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace UnitOfWork
 {
@@ -22,6 +23,10 @@ namespace UnitOfWork
         //    params object[] parameters);
         void Insert(TEntity entity);
 
+        TEntity InsertData(TEntity entity);
+
         void Update(TEntity entityToUpdate);
+
+
     }
 }

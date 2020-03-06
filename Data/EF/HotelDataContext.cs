@@ -29,8 +29,8 @@ namespace Data.EF
             modelBuilder.ApplyConfiguration(new OrderDetailConfig());
             modelBuilder.ApplyConfiguration(new RoomConfig());
             modelBuilder.ApplyConfiguration(new ServiceConfig());
+            modelBuilder.ApplyConfiguration(new BookRoomConfig());
 
-          
         }
 
         public DbSet<CategoryRoom> CategoryRooms { get; set; }
@@ -41,5 +41,6 @@ namespace Data.EF
         public DbSet<Order> Orders { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<BookRoom> BookRooms { get; set; }
     }
 }

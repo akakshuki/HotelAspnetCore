@@ -10,6 +10,11 @@ namespace Api.Models.Mappings
         {
             CreateMap<CategoryRoom, CategoryRoomMv>();
             CreateMap<Room, RoomMv>();
+            CreateMap<CategoryService, CategoryServicesMv>();
+            CreateMap<Service, ServiceMv>();
+            
+            CreateMap<Booking, BookingMv>();
+            CreateMap<Guest, GuestMv>();
         }
     }
 }

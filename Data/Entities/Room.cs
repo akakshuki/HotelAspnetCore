@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿    using System.Collections.Generic;
 
 namespace Data.Entities
 {
@@ -10,6 +10,6 @@ namespace Data.Entities
         public bool Status { get; set; }
 
         public CategoryRoom CategoryRoom { get; set; }
-        public List<Booking> Bookings { get; set; }
+        public List<BookRoom> BookRooms { get; set; }
     }
 }

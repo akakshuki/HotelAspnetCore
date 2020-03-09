@@ -1,10 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.Xml;
 using Api.Models.DTOs;
 using AutoMapper;
 using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 using UnitOfWork;
 
 namespace Api.Models.Dao
@@ -38,7 +37,7 @@ namespace Api.Models.Dao
         {
             var categoryRoom = new CategoryService()
             {
-               Name = data.Name
+                Name = data.Name
             };
             try
             {
@@ -85,6 +84,4 @@ namespace Api.Models.Dao
             }
         }
     }
-
-    
 }

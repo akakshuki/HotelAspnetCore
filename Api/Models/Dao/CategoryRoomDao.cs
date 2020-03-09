@@ -4,8 +4,6 @@ using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using UnitOfWork;
 
 namespace Api.Models.Dao
@@ -54,7 +52,6 @@ namespace Api.Models.Dao
             var categoryRoom = _mapper.Map<CategoryRoomMv>(data);
             return categoryRoom;
         }
-
 
         public void Update(CategoryRoomMv category)
         {

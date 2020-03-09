@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Api.Models.DTOs
 {
@@ -15,6 +12,5 @@ namespace Api.Models.DTOs
         public string IdentityNo { get; set; }
 
         public List<BookingMv> BookingMvs { get; set; }
-
     }
 }

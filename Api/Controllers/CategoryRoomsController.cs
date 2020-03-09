@@ -62,7 +62,7 @@ namespace Api.Controllers
             }
         }
 
-       // POST: api/CategoryRooms
+        // POST: api/CategoryRooms
         [HttpPost]
         public IActionResult Post([FromBody]CategoryRoomMv category)
         {

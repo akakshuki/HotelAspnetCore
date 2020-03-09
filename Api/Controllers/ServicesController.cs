@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.Models.Dao;
+﻿using Api.Models.Dao;
 using Api.Models.DTOs;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 using UnitOfWork;
 
 namespace Api.Controllers
@@ -84,6 +81,7 @@ namespace Api.Controllers
                 return NotFound();
             }
         }
+
         // POST: api/Services
         [HttpPost]
         public IActionResult Post([FromBody]ServiceMv Service)
@@ -132,6 +130,4 @@ namespace Api.Controllers
             }
         }
     }
-
-
 }

@@ -15,8 +15,5 @@ namespace Api.Models.DTOs
         public decimal Amount { get; set; }
 
         public GuestMv GuestMv { get; set; }
-
-
     }
-
 }

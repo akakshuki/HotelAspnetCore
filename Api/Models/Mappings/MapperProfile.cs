@@ -12,7 +12,7 @@ namespace Api.Models.Mappings
             CreateMap<Room, RoomMv>();
             CreateMap<CategoryService, CategoryServicesMv>();
             CreateMap<Service, ServiceMv>();
-            
+
             CreateMap<Booking, BookingMv>();
             CreateMap<Guest, GuestMv>();
         }

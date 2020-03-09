@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.Models.DTOs;
+﻿using Api.Models.DTOs;
+
 using AutoMapper;
 using Data.Entities;
 using Data.Enums;
-using Data.Migrations;
+using System;
 using UnitOfWork;
 
 namespace Api.Models.Dao
@@ -15,17 +12,18 @@ namespace Api.Models.Dao
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+      
 
         public BookingDao(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+       
         }
 
-       
-
-        public void  CreateBooking(BookMv book)
+        public void CreateBooking(BookMv book)
         {
+         
             try
             {
                 var guestData = new Guest()
@@ -33,13 +31,11 @@ namespace Api.Models.Dao
                     FirstName = book.FirstName,
                     LastName = book.LastName,
                     Email = book.Email,
-                    Phone = book.Phone,
-                    IdentityNo = book.IdentityNo
+                    Phone = book.Phone
                 };
 
                 var currentGuest = _unitOfWork.Guests.InsertData(guestData);
 
-               
                 _unitOfWork.Commit();
 
                 var bookingData = new Booking()
@@ -50,9 +46,9 @@ namespace Api.Models.Dao
                     SecretCode = new Random().Next(100000, 999999).ToString(),
                     GuestId = currentGuest.Id,
                     Status = BookedStatus.booking,
-                    DurationStay =(int)(book.CheckOut - book.CheckIn).TotalDays,
-                    
+                    DurationStay = (int)(book.CheckOut - book.CheckIn).TotalDays,
                 };
+
                 _unitOfWork.Bookings.Insert(bookingData);
                 _unitOfWork.Commit();
             }
@@ -62,8 +58,5 @@ namespace Api.Models.Dao
                 throw;
             }
         }
-
-    
     }
-
 }

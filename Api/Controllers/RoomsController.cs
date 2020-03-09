@@ -81,6 +81,7 @@ namespace Api.Controllers
                 return NotFound();
             }
         }
+
         // POST: api/Rooms
         [HttpPost]
         public IActionResult Post([FromBody]RoomMv room)
@@ -128,7 +129,5 @@ namespace Api.Controllers
                 return NotFound();
             }
         }
-
-        
     }
 }

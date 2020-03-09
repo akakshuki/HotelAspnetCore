@@ -37,7 +37,7 @@ namespace Api.Models.Dao
         public ActionResult<List<RoomMv>> GetListRoomByIdCate(int id)
         {
             var data = _unitOfWork.Rooms.Get();
-            data =data.Where(x => x.CategoryRoomId == id).ToList();
+            data = data.Where(x => x.CategoryRoomId == id).ToList();
             var room = _mapper.Map<List<RoomMv>>(data);
             return room;
         }

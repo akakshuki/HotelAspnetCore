@@ -7,8 +7,6 @@
         public int CategoryRoomId { get; set; }
         public bool Status { get; set; }
 
-
         public CategoryRoomMv CategoryRoomMv { get; set; }
-
     }
 }

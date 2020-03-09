@@ -4,7 +4,6 @@ export class Booking {
     LastName: string;
     Phone: string;
     Email: string;
-    IdentityNo: string;
     CheckIn: Date;
     CheckOut: Date;
 }

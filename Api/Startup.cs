@@ -1,4 +1,5 @@
 using Api.Configuration;
+
 using AutoMapper;
 using Data.EF;
 using Microsoft.AspNetCore.Builder;
@@ -31,7 +32,7 @@ namespace Api
 
             services.AddDbContext<HotelDataContext>(config =>
                 config.UseSqlServer(Configuration.GetConnectionString("HotelDB")));
-
+        
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
             services.ConfigureCors();
@@ -62,7 +63,7 @@ namespace Api
 
             app.UseAuthorization();
 
-            app.UseCors();
+            app.UseCors("CorsPolicy");
 
             app.UseSwagger();
 
@@ -70,6 +71,8 @@ namespace Api
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHttpsRedirection();
 
             app.UseSwaggerUI(c =>
             {

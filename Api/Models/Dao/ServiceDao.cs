@@ -1,11 +1,10 @@
-﻿using AutoMapper;
+﻿using Api.Models.DTOs;
+using AutoMapper;
+using Data.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Api.Models.DTOs;
-using Data.Entities;
-using Microsoft.AspNetCore.Mvc;
 using UnitOfWork;
 
 namespace Api.Models.Dao
@@ -47,11 +46,11 @@ namespace Api.Models.Dao
         {
             var data = new Service()
             {
-              Name = service.Name,
-              Description = service.Description,
-              Price = service.Price,
-              CategoryServiceId = service.CategoryServiceId,
-              Status = true
+                Name = service.Name,
+                Description = service.Description,
+                Price = service.Price,
+                CategoryServiceId = service.CategoryServiceId,
+                Status = true
             };
             try
             {

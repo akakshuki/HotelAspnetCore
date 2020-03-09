@@ -1,24 +1,40 @@
 <div class="row" id="background">
-    <div class="container pl-5 col-md-4">
-        <h1 class="text-white py-5" id="LogoName">
-            Radisson
-        </h1>
-        <h4 class="text-white">
-            WelCome
-        </h4>
-    </div>
-    <div class="col-md-7 p-5">
-        <div class="card pl-3 shadow-lg" id="card">
-            <div class="card-body">
-              <h5 class="card-title text-center">Let Booking</h5>
-             <form action="" method="post">
-              <div id="poc" class="row m-5">
-                <label for="dateRangePicker" class="col-4 font-weight-bold">Ngày đến</label>
-                <label for="dateRangePicker" class="col-4 font-weight-bold mr-3">Ngày đi</label>
-                <input id="dateRangePicker" style="width: 17rem;" class="px-3 py-1 DateRangePickerInput mb-3" type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
-              </div>
-             </form>
-            </div>
+  <div class="container pl-5 col-md-4">
+    <h1 class="text-white py-5" id="LogoName">
+      Radisson
+    </h1>
+    <h4 class="text-white">
+      WelCome
+    </h4>
+  </div>
+  <div class="col-md-7 p-5">
+    <div class="card pl-3 shadow-lg" id="card">
+      <div class="card-body">
+        <h5 class="card-title text-center">Let Booking</h5>
+        <div class="row">
+          <div class="row col-md-12 mx-5">
+            <label for="dateRangePicker" class="col-md-4 font-weight-bold">Ngày đến</label>
+            <label for="dateRangePicker" class="col-md-4 font-weight-bold mr-3">Ngày đi</label>
+            <input  id="datepicker" class="px-4 py-1 form-control DateRangePickerInput mb-3"
+              type="text" name="daterangeInput" daterangepicker [options]="options"
+              (selected)="selectedDate($event, daterange)" />
           </div>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary col-md-4 mx-5" data-toggle="modal" data-target="#modelId">
+            Launch
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <app-booking [dateIn]="checkInDate" [dateOut]="checkOutDate" ></app-booking>
+    </div>
+  </div>
 </div>

@@ -1,6 +1,6 @@
-export class Categoryromm {
-       Id : number ;
-       Name: string ;
-       Price : number ; 
-       Description: string; 
+export class CategoryRoomMv {
+       id: number;
+       name: string;
+       price: number;
+       description: string;
 }

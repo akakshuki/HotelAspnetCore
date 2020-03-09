@@ -15,7 +15,7 @@ namespace Data.Configurations
             builder.Property(x => x.LastName).HasMaxLength(300).IsRequired();
             builder.Property(x => x.Phone).HasMaxLength(10).IsRequired();
             builder.Property(x => x.Email).HasMaxLength(300).IsUnicode(false).IsRequired();
-            builder.Property(x => x.IdentityNo).HasMaxLength(9).IsRequired();
+            builder.Property(x => x.IdentityNo).HasMaxLength(9);
         }
     }
 }

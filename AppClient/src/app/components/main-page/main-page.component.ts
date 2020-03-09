@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import {DaterangepickerConfig} from 'ng2-daterangepicker';
-
-
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import { DaterangepickerConfig } from 'ng2-daterangepicker';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -14,7 +12,9 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 export class MainPageComponent implements OnInit {
   public daterange: any = {};
 
-
+  checkInDate = new Date;
+  checkOutDate = new Date(Date.now() + ( 3600 * 1000 * 24)) ;
+  
   // see original project for full list of options
   // can also be setup using the config service to apply to multiple pickers
   public options: any = {
@@ -48,15 +48,16 @@ export class MainPageComponent implements OnInit {
     },
     alwaysShowCalendars: false,
   };
- constructor(
-   private router: Router, 
-   private activatedRoute: ActivatedRoute,
-   private daterangepickerOptions: DaterangepickerConfig) {
-   
-    }
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private daterangepickerOptions: DaterangepickerConfig
+  ) {
+
+  }
 
   ngOnInit() {
-    $(document).on('change', 'input[type=range].multirange.ghost', function() {
+    $(document).on('change', 'input[type=range].multirange.ghost', function () {
       $('input[type=range].original', $(this).parent()).trigger('change');
     });
 
@@ -72,5 +73,8 @@ export class MainPageComponent implements OnInit {
     this.daterange.start = value.start;
     this.daterange.end = value.end;
     this.daterange.label = value.label;
-  }
+
+    this.checkInDate = value.start;
+    this.checkOutDate = value.end;
+    }
 }

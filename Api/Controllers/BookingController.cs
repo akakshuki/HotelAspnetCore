@@ -4,6 +4,7 @@ using Api.Models.DTOs;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 using UnitOfWork;
 
 namespace Api.Controllers
@@ -27,11 +28,11 @@ namespace Api.Controllers
 
         // POST: api/Booking
         [HttpPost]
-        public IActionResult Post([FromBody] BookMv booking)
+        public async Task<IActionResult> Post([FromBody] BookMv booking)
         {
             try
             {
-                new BookingDao(_unitOfWork, _mapper).CreateBooking(booking);
+               await new BookingDao(_unitOfWork, _mapper).CreateBooking(booking);
                 return Ok();
             }
             catch (Exception e)

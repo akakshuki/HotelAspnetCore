@@ -4,9 +4,8 @@ using AutoMapper;
 using Data.Entities;
 using Data.Enums;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
-using MailKit.Net.Smtp;
-using MimeKit;
 using UnitOfWork;
 
 namespace Api.Models.Dao
@@ -15,13 +14,11 @@ namespace Api.Models.Dao
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-      
 
         public BookingDao(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-       
         }
 
         public async Task CreateBooking(BookMv book)
@@ -30,7 +27,7 @@ namespace Api.Models.Dao
             {
                 System.Net.Mail.MailMessage MyMailMessage = new System.Net.Mail.MailMessage();
                 MyMailMessage.From = new System.Net.Mail.MailAddress("giangbaccai1207@gmail.com");
-                MyMailMessage.To.Add("le.dinhhoang.1207@gmail.com");// Mail would be sent to this address
+                MyMailMessage.To.Add(book.Email);// Mail would be sent to this address
                 MyMailMessage.Subject = "Khach San";
 
                 System.Net.Mail.SmtpClient SMTPServer = new System.Net.Mail.SmtpClient("smtp.gmail.com");
@@ -38,17 +35,23 @@ namespace Api.Models.Dao
                 SMTPServer.Credentials = new System.Net.NetworkCredential("giangbaccai1207@gmail.com", "dinhhoang0712");
                 SMTPServer.EnableSsl = true;
 
-
-                var guestData = new Guest()
+                var guest = _unitOfWork.Guests.Get().Where(x => x.Email == book.Email).FirstOrDefault();
+                var currentGuest = new Guest();
+                if (guest != null)
                 {
-                    FirstName = book.FirstName,
-                    LastName = book.LastName,
-                    Email = book.Email,
-                    Phone = book.Phone
-                };
-
-                var currentGuest = _unitOfWork.Guests.InsertData(guestData);
-
+                    currentGuest = guest;
+                }
+                else
+                {
+                    var guestData = new Guest()
+                    {
+                        FirstName = book.FirstName,
+                        LastName = book.LastName,
+                        Email = book.Email,
+                        Phone = book.Phone
+                    };
+                    currentGuest = _unitOfWork.Guests.InsertData(guestData);
+                }
                 _unitOfWork.Commit();
 
                 var bookingData = new Booking()
@@ -63,9 +66,8 @@ namespace Api.Models.Dao
                 };
                 MyMailMessage.Body = $"ma so bi mat ban la: {bookingData.SecretCode}";
                 _unitOfWork.Bookings.Insert(bookingData);
-                _unitOfWork.Commit(); 
-             await SMTPServer.SendMailAsync(MyMailMessage);
-
+                _unitOfWork.Commit();
+                await SMTPServer.SendMailAsync(MyMailMessage);
             }
             catch (Exception e)
             {

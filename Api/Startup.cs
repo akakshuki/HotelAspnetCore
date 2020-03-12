@@ -32,7 +32,7 @@ namespace Api
 
             services.AddDbContext<HotelDataContext>(config =>
                 config.UseSqlServer(Configuration.GetConnectionString("HotelDB")));
-        
+
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
             services.ConfigureCors();

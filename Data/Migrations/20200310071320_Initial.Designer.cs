@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(HotelDataContext))]
-    [Migration("20200305124752_data")]
-    partial class data
+    [Migration("20200310071320_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -159,7 +159,6 @@ namespace Data.Migrations
                         .HasMaxLength(300);
 
                     b.Property<string>("IdentityNo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(9)")
                         .HasMaxLength(9);
 

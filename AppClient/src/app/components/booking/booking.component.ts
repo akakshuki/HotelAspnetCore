@@ -42,7 +42,6 @@ export class BookingComponent implements OnInit {
     });
   }
   checkvalidation(formName: string, type: string): boolean {
-
     return this.validationService.validateValueForm(this.form, formName, type);
   }
 

@@ -1,0 +1,40 @@
+﻿@using System.Collections
+@using AppAdmin.Models.DTOs
+@model AppAdmin.Models.DTOs.RoomMv
+
+@{
+    ViewData["Title"] = "CreateRooms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listCategoryRoom = (IEnumerable<CategoryRoomMv>)ViewBag.listCategoryRoom;
+}
+
+<div class="container">
+
+    <h4>RoomMv</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="UpdateRoom" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Id" type="hidden" class="form-control" />
+                <div class="form-group">
+                    <label asp-for="RoomNo" class="control-label"></label>
+                    <input asp-for="RoomNo" class="form-control" />
+                    <span asp-validation-for="RoomNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryRoomId" class="control-label"></label>
+                    <select asp-for="CategoryRoomId" asp-items="@(new SelectList(listCategoryRoom,"Id","Name"))" class="form-control"></select>
+                    <span asp-validation-for="CategoryRoomId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="update" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Rooms">Back to List</a>
+    </div>
+</div>

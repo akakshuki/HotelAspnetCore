@@ -29,6 +29,7 @@ namespace Api.Controllers
             try
             {
                 var data = new ServiceDao(_unitOfWork, _mapper).GetAll();
+
                 if (data == null)
                 {
                     return NotFound();
@@ -53,7 +54,7 @@ namespace Api.Controllers
                 {
                     return NotFound();
                 }
-                return Ok(data);
+                return data;
             }
             catch (Exception e)
             {
@@ -64,7 +65,7 @@ namespace Api.Controllers
 
         // GET: api/Services/5
         [HttpGet("CountService/{idCategoryService}")]
-        public ActionResult<ServiceMv> GetCountService(int idCategoryService)
+        public ActionResult<List<ServiceMv>> GetCountService(int idCategoryService)
         {
             try
             {
@@ -73,7 +74,7 @@ namespace Api.Controllers
                 {
                     return NotFound();
                 }
-                return Ok(data);
+                return data;
             }
             catch (Exception e)
             {

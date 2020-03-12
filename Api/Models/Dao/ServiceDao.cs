@@ -20,17 +20,27 @@ namespace Api.Models.Dao
             this._mapper = mapper;
         }
 
-        public ActionResult<IEnumerable<ServiceMv>> GetAll()
+        public IEnumerable<ServiceMv> GetAll()
         {
             var service = _unitOfWork.Services.Get();
+            var category = _unitOfWork.CategoryServices.Get();
             var list = _mapper.Map<List<ServiceMv>>(service);
+            var listCate = _mapper.Map<List<CategoryServicesMv>>(category);
+
+            foreach (var serviceMv in list)
+            {
+                serviceMv.CategoryServicesMv = listCate.Where(x => x.Id == serviceMv.CategoryServiceId).SingleOrDefault();
+            }
             return list;
         }
 
         public ActionResult<ServiceMv> GetById(int id)
         {
             var data = _unitOfWork.Services.GetByID(id);
+            var datacate = _unitOfWork.CategoryServices.GetByID(data.CategoryServiceId);
             var Service = _mapper.Map<ServiceMv>(data);
+            var category = _mapper.Map<CategoryServicesMv>(datacate);
+            Service.CategoryServicesMv = category;
             return Service;
         }
 

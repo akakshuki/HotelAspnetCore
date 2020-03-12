@@ -37,6 +37,7 @@ namespace AppAdmin
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();

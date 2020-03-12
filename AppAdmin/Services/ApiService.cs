@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -13,9 +11,7 @@ namespace AppAdmin.Services
         public ApiService()
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://localhost:5001/");
-            
-           
+            _client.BaseAddress = new Uri("https://localhost:5001/api/");
         }
 
         public HttpClient ApiClient()
@@ -28,11 +24,13 @@ namespace AppAdmin.Services
             var res = await _client.GetAsync(url);
             return res;
         }
+
         public async Task<HttpResponseMessage> PostData<T>(string url, T data)
         {
             var res = await _client.PostAsJsonAsync(url, data);
             return res;
         }
+
         public async Task<HttpResponseMessage> GetDataById(string url, object id)
         {
             var res = await _client.GetAsync(url + "/" + id.ToString());
@@ -44,11 +42,11 @@ namespace AppAdmin.Services
             var res = await _client.DeleteAsync(url + "/" + id.ToString());
             return res;
         }
+
         public async Task<HttpResponseMessage> Update<T>(string url, object id, T data)
         {
-            var res = await _client.PutAsJsonAsync(url+"/"+ id, data);
+            var res = await _client.PutAsJsonAsync(url + "/" + id, data);
             return res;
         }
-
     }
 }

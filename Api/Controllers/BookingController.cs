@@ -16,23 +16,35 @@ namespace Api.Controllers
         private IUnitOfWork _unitOfWork;
 
         private readonly IMapper _mapper;
-      
-       
 
         public BookingController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-         
         }
 
         // POST: api/Booking
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] BookMv booking)
+        [HttpPost("guestpost")]
+        public async Task<IActionResult> UserPost([FromBody] BookMv booking)
         {
             try
             {
-               await new BookingDao(_unitOfWork, _mapper).CreateBooking(booking);
+                await new BookingDao(_unitOfWork, _mapper).CreateBooking(booking);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
+        }
+
+        [HttpPost("employeepost")]
+        public async Task<IActionResult> EmpleePost([FromBody] BookMv booking)
+        {
+            try
+            {
+                await new BookingDao(_unitOfWork, _mapper).CreateBooking(booking);
                 return Ok();
             }
             catch (Exception e)

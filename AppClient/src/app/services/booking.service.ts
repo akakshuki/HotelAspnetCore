@@ -28,7 +28,7 @@ export class BookingService {
   bookingPost(booking: Booking) {
     var data = JSON.stringify(booking);
     console.log(data);
-   return this.client.post(environment.baseUrl + this.object, JSON.stringify(booking), { headers: this.headers })
+   return this.client.post(environment.baseUrl + this.object+"/guestpost", JSON.stringify(booking), { headers: this.headers })
       .pipe(catchError(this.handleError))
   }
 

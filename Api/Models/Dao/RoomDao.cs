@@ -30,11 +30,14 @@ namespace Api.Models.Dao
         public ActionResult<RoomMv> GetById(int id)
         {
             var data = _unitOfWork.Rooms.GetByID(id);
+            var category = _unitOfWork.CategoryRooms.GetByID(data.Id);
+            var categoryRoom = _mapper.Map<CategoryRoomMv>(category);
             var room = _mapper.Map<RoomMv>(data);
+            room.CategoryRoomMv = categoryRoom;
             return room;
         }
 
-        public ActionResult<List<RoomMv>> GetListRoomByIdCate(int id)
+        public List<RoomMv> GetListRoomByIdCate(int id)
         {
             var data = _unitOfWork.Rooms.Get();
             data = data.Where(x => x.CategoryRoomId == id).ToList();

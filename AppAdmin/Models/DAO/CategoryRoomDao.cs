@@ -3,11 +3,8 @@ using AppAdmin.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace AppAdmin.Models.DAO
 {
@@ -17,7 +14,7 @@ namespace AppAdmin.Models.DAO
 
         public CategoryRoomDao() => _api = new ApiService();
 
-        private string url = "api/CategoryRooms";
+        private string url = "CategoryRooms";
 
         public async Task<List<CategoryRoomMv>> GeList()
         {
@@ -38,24 +35,19 @@ namespace AppAdmin.Models.DAO
             }
 
             return list;
-
         }
 
         public async Task<HttpResponseMessage> CreateCategory(CategoryRoomMv category)
         {
             var postTask = await _api.PostData<CategoryRoomMv>(url, category);
 
-
             return postTask;
-
-
         }
 
         public async Task<CategoryRoomMv> GetById(int id)
         {
-
             var data = new CategoryRoomMv();
-            var res = await _api.GetDataById(url,id);
+            var res = await _api.GetDataById(url, id);
             try
             {
                 if (res.IsSuccessStatusCode)
@@ -71,8 +63,6 @@ namespace AppAdmin.Models.DAO
             }
 
             return data;
-
-
         }
 
         public async Task Delete(int id)
@@ -88,15 +78,11 @@ namespace AppAdmin.Models.DAO
             }
         }
 
-
         public async Task<HttpResponseMessage> UpdateCategory(CategoryRoomMv category)
         {
             var update = await _api.Update<CategoryRoomMv>(url, category.Id, category);
 
-
             return update;
-
-
         }
     }
 }

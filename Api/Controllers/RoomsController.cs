@@ -33,7 +33,7 @@ namespace Api.Controllers
                 {
                     return NotFound();
                 }
-                return Ok(data);
+                return data;
             }
             catch (Exception e)
             {
@@ -53,7 +53,7 @@ namespace Api.Controllers
                 {
                     return NotFound();
                 }
-                return Ok(data);
+                return data;
             }
             catch (Exception e)
             {

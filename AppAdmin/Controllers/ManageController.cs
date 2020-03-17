@@ -93,7 +93,7 @@ namespace AppAdmin.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateRooms()
         {
-            var data = await new CategoryRoomDao().GeList();
+                var data = await new CategoryRoomDao().GeList();
             ViewBag.listCategoryRoom = data;
             return View();
         }

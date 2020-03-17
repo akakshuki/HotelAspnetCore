@@ -1,6 +1,6 @@
 ﻿namespace Data.Enums
 {
-    public enum OrderStatus
+    public enum Payment
     {
         Cash,
         Card,

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Data.Enums;
 
 namespace Data.Entities
 {
@@ -9,7 +10,7 @@ namespace Data.Entities
         public string Description { get; set; }
         public int CategoryServiceId { get; set; }
         public decimal Price { get; set; }
-        public bool Status { get; set; }
+        public Status Status { get; set; }
 
         public CategoryService CategoryService { get; set; }
 

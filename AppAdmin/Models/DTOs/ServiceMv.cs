@@ -7,7 +7,7 @@
         public string Description { get; set; }
         public int CategoryServiceId { get; set; }
         public decimal Price { get; set; }
-        public bool Status { get; set; }
+        public int Status { get; set; }
 
         public CategoryServicesMv CategoryServicesMv { get; set; }
     }

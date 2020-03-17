@@ -6,6 +6,19 @@
 body {
     overflow-x: hidden;
 }
+.buttonRoom {
+    max-width: 4rem;
+    max-height: 2rem;
+    border: 1px solid black;
+}
+.rounded-pill.buttonRoom :hover {
+    color: blue;
+    font-weight: bold;
+}
+.rounded-pill.buttonRoom.RoomSelected {
+    color: blue;
+    font-weight: bold;
+}
 
 #sidebar-wrapper {
     min-height: 100vh;

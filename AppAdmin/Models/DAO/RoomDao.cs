@@ -38,7 +38,7 @@ namespace AppAdmin.Models.DAO
             return list;
         }
 
-        public async Task<object> CreateRooms(RoomMv room)
+        public async Task<HttpResponseMessage> CreateRooms(RoomMv room)
         {
             var postTask = await _api.PostData<RoomMv>(url, room);
 
@@ -84,6 +84,30 @@ namespace AppAdmin.Models.DAO
             var update = await _api.Update<RoomMv>(url, room.Id, room);
 
             return update;
+        }
+
+
+        public async Task<List<RoomMv>> listCategoryRoomById(int id)
+        {
+            var res = await _api.GetDataById(url+ "/CountRoom",id);
+           var list = new List<RoomMv>();
+            try
+            {
+                if (res.IsSuccessStatusCode)
+                {
+                    var result = res.Content.ReadAsStringAsync().Result;
+                    list = JsonConvert.DeserializeObject<List<RoomMv>>(result).OrderBy(x => x.CategoryRoomId).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                list = null;
+                throw;
+                
+            }
+
+            return list;
         }
     }
 }

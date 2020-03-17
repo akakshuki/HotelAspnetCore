@@ -1,4 +1,5 @@
 ﻿using Data.Entities;
+using Data.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,7 +15,7 @@ namespace Data.Configurations
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Description).IsRequired();
             builder.Property(x => x.Price).HasDefaultValue(0);
-            builder.Property(x => x.Status).HasDefaultValue(1);
+            builder.Property(x => x.Status).HasDefaultValue(Status.Active);
 
             builder.HasOne(x => x.CategoryService)
                 .WithMany(x => x.Services)

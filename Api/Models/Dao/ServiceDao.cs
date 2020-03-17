@@ -59,8 +59,7 @@ namespace Api.Models.Dao
                 Name = service.Name,
                 Description = service.Description,
                 Price = service.Price,
-                CategoryServiceId = service.CategoryServiceId,
-                Status = true
+                CategoryServiceId = service.CategoryServiceId
             };
             try
             {
@@ -81,7 +80,7 @@ namespace Api.Models.Dao
                 Name = service.Name,
                 Description = service.Description,
                 CategoryServiceId = service.CategoryServiceId,
-                Status = true
+                Status = service.Status
             };
             try
             {

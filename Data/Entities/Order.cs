@@ -8,7 +8,7 @@ namespace Data.Entities
     {
         public int Id { get; set; }
         public int BookingId { get; set; }
-        public OrderStatus Payment { get; set; }
+        public Payment Payment { get; set; }
         public DateTime DateCreate { get; set; }
         public Guid EmployeeId { get; set; }
         public decimal TotalAmount { get; set; }

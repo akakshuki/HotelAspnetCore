@@ -4,7 +4,9 @@ using Api.Models.DTOs;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using UnitOfWork;
 
 namespace Api.Controllers
@@ -40,11 +42,11 @@ namespace Api.Controllers
         }
 
         [HttpPost("employeepost")]
-        public async Task<IActionResult> EmpleePost([FromBody] BookMv booking)
+        public async Task<IActionResult> EmpleePostAsync([FromBody] BookMv booking)
         {
             try
             {
-                await new BookingDao(_unitOfWork, _mapper).CreateBooking(booking);
+              await  new BookingDao(_unitOfWork, _mapper).EmployeCreateBooking(booking);
                 return Ok();
             }
             catch (Exception e)
@@ -53,5 +55,78 @@ namespace Api.Controllers
                 return NotFound();
             }
         }
+
+        [HttpGet("CheckGuest")]
+        public IActionResult CheckGuest(string email)
+        {
+            try
+            {
+                if (new BookingDao(_unitOfWork, _mapper).checkGuest(email))
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return NotFound();
+            }
+        }
+
+        [HttpGet("GetGuest")]
+        public ActionResult<List<GuestMv>> GetGuest()
+        {
+            try
+            {
+                var data = new GuestDao(_unitOfWork, _mapper).GetListGuest();
+                return data;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+                throw;
+            }
+
+            
+        }
+        [HttpGet("GetBookingOnline")]
+        public IActionResult GetBookingOnline()
+        {
+            try
+            {
+                var data = new BookingDao(_unitOfWork, _mapper).GetListBookingOnline();
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+                throw;
+            }
+        }
+        [HttpGet("GetBooking")]
+        public IActionResult GetBooking()
+        {
+            try
+            {
+                var data = new BookingDao(_unitOfWork, _mapper).GetListBooking();
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+                throw;
+            }
+        }
+
+
     }
 }

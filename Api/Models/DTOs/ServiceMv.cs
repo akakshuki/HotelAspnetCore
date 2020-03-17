@@ -1,4 +1,6 @@
-﻿namespace Api.Models.DTOs
+﻿using Data.Enums;
+
+namespace Api.Models.DTOs
 {
     public class ServiceMv
     {
@@ -7,7 +9,7 @@
         public string Description { get; set; }
         public int CategoryServiceId { get; set; }
         public decimal Price { get; set; }
-        public bool Status { get; set; }
+        public Status Status { get; set; }
 
         public CategoryServicesMv CategoryServicesMv { get; set; }
     }

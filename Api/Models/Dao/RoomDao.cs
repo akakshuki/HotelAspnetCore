@@ -23,7 +23,13 @@ namespace Api.Models.Dao
         public ActionResult<IEnumerable<RoomMv>> GetAll()
         {
             var room = _unitOfWork.Rooms.Get();
+            var category = _unitOfWork.CategoryRooms.Get();
+            var listCate = _mapper.Map<List<CategoryRoomMv>>(category);
             var list = _mapper.Map<List<RoomMv>>(room);
+            foreach (var roomMv in list)
+            {
+                roomMv.CategoryRoomMv = listCate.Where(x => x.Id == roomMv.CategoryRoomId).SingleOrDefault();
+            }
             return list;
         }
 
@@ -50,8 +56,8 @@ namespace Api.Models.Dao
             var Room = new Room()
             {
                 RoomNo = room.RoomNo,
-                CategoryRoomId = room.CategoryRoomId,
-                Status = true
+                CategoryRoomId = room.CategoryRoomId
+            
             };
             try
             {
@@ -71,8 +77,8 @@ namespace Api.Models.Dao
             {
                 Id = room.Id,
                 RoomNo = room.RoomNo,
-                CategoryRoomId = room.CategoryRoomId,
-                Status = true
+                CategoryRoomId = room.CategoryRoomId
+
             };
             try
             {

@@ -1,5 +1,6 @@
 # HotelAspnetCore
 
+
 ## ASP.NET Core 3.1
 
 ## Technologies 
@@ -12,6 +13,7 @@
 ## Pattern
   - generic repository pattern
 
+r
 ## Library
   - entityframmework core
   - entityframmework design
@@ -21,3 +23,5 @@
   - entityframework core identity
 
 ## How to contribute
+
+

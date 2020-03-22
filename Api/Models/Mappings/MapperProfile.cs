@@ -14,6 +14,9 @@ namespace Api.Models.Mappings
             CreateMap<Service, ServiceMv>();
             CreateMap<Booking, BookingMv>();
             CreateMap<Guest, GuestMv>();
+            CreateMap<BookRoom, BookRoomMv>();
+            CreateMap<Order, OrderMv>();
+            CreateMap<OrderDetail, OrderDetailMv>();
         }
     }
 }

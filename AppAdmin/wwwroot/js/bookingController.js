@@ -1,6 +1,7 @@
-﻿roomIds = [];
+﻿const baseUrl ='https://localhost:44338/';
+roomIds = [];
 booking = {
-  
+
     init() {
         booking.registerFunc();
     },
@@ -15,7 +16,7 @@ booking = {
         });
 
         $(".buttonRoom").on('click',
-            function() {
+            function () {
                 if ($(this).hasClass('RoomSelected')) {
                     var id = $(this).attr("data-id");
                     $(this).removeClass('RoomSelected');
@@ -27,13 +28,22 @@ booking = {
                 }
             });
         $('.BookingOnlineRow').on('click',
-            function() {
+            function () {
                 booking.getOnlineBooking($(this).attr('data-id'));
+            });
+
+        $('#buttonSearchSecretCode').on('click', function() {
+            booking.searchDetailOrderBySecretCode($('#searchCodeInput').val());
+        });
+
+        $('.bookedData').on('click',
+            function() {
+                booking.searchDetailOrderBySecretCode($(this).attr('data-secretCode'));
             });
     },
     checkEmail(data1) {
         $.ajax({
-            url: 'https://localhost:44338/Booking/checkEmail',
+            url: baseUrl + 'Booking/checkEmail',
             type: 'GET',
             dataType: 'Json',
             data: {
@@ -42,9 +52,9 @@ booking = {
             contentType: "application/json; charset=utf-8",
             success: function (res) {
                 if (res.data) {
-                    $.notify("đã có","warn");
+                    $.notify("đã có", "warn");
                 } else {
-                    $.notify("Chưa có","success");
+                    $.notify("Chưa có", "success");
                 }
             },
             error: function (err) {
@@ -57,13 +67,13 @@ booking = {
     },
     getListRoomByCategory(idCate) {
         $.ajax({
-            url: 'https://localhost:44338/Booking/GetRoomsByCategoryId',
+            url: baseUrl + 'Booking/GetRoomsByCategoryId',
             type: 'GET',
             dataType: 'Json',
             data: {
                 idCate: idCate
             },
-            success: function(res) {
+            success: function (res) {
                 var data = res.data;
                 var html = '';
                 var template = $('#data-template').html();
@@ -96,10 +106,36 @@ booking = {
         $('#RoomIds').val(roomIds);
     },
     getOnlineBooking(id) {
+        $.ajax({
+            url: baseUrl + 'Booking/GetBookingById',
+            type: 'GET',
+            dataType: 'Json',
+            data: {
+                bookingId: id
+            },
+            success: function (res) {
+                $('#Id').val(res.data.id);
+                $('#FirstName').val(res.data.firstName);
+                $('#LastName').val(res.data.lastName);
+                $('#Phone').val(res.data.phone);
+                $('#Email').val(res.data.email);
+                $('#IdentityNo').val(res.data.identityNo);
+                $('#timeCheckIn').val(res.data.checkIn);
+                $('#timeCheckOut').val(res.data.checkOut);
+            },
+            error: function (err) {
+                console.log(err.message);
+            }
+        });
+    },
 
+    searchDetailOrderBySecretCode(secretCode) {
+       
+        window.location.href =  baseUrl+ "Booking/GetDetailOrder?secretCode="+ secretCode;
+            
     }
 
 
-  
+
 }
 booking.init(); 

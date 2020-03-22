@@ -29,7 +29,7 @@ namespace Api.Models.Dao
 
             foreach (var serviceMv in list)
             {
-                serviceMv.CategoryServicesMv = listCate.Where(x => x.Id == serviceMv.CategoryServiceId).SingleOrDefault();
+                serviceMv.CategoryServicesMv = listCate.SingleOrDefault(x => x.Id == serviceMv.CategoryServiceId);
             }
             return list;
         }
@@ -106,6 +106,17 @@ namespace Api.Models.Dao
                 Console.WriteLine(e);
                 throw;
             }
+        }
+
+        public List<ServiceMv> GetServiceByCategoryId( int id)
+        {
+            var data = _mapper.Map<List<ServiceMv>>(_unitOfWork.Services.Get().Where(x => x.CategoryServiceId == id).ToList());
+            foreach (var serviceMv in data)
+            {
+                serviceMv.CategoryServicesMv =
+                    _mapper.Map<CategoryServicesMv>(_unitOfWork.CategoryServices.GetByID(serviceMv.CategoryServiceId));
+            }
+            return data;
         }
     }
 }

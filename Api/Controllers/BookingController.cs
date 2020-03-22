@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using api.Models.DTOs;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using UnitOfWork;
 
@@ -46,7 +47,7 @@ namespace Api.Controllers
         {
             try
             {
-              await  new BookingDao(_unitOfWork, _mapper).EmployeCreateBooking(booking);
+                await new BookingDao(_unitOfWork, _mapper).EmployeCreateBooking(booking);
                 return Ok();
             }
             catch (Exception e)
@@ -94,8 +95,9 @@ namespace Api.Controllers
                 throw;
             }
 
-            
+
         }
+
         [HttpGet("GetBookingOnline")]
         public IActionResult GetBookingOnline()
         {
@@ -111,6 +113,7 @@ namespace Api.Controllers
                 throw;
             }
         }
+
         [HttpGet("GetBooking")]
         public IActionResult GetBooking()
         {
@@ -127,6 +130,105 @@ namespace Api.Controllers
             }
         }
 
+        [HttpGet("GetBookingById/{id}")]
+        public IActionResult GetBookingById(int id)
+        {
+            try
+            {
+                var data = new BookingDao(_unitOfWork, _mapper).GetBookingById(id);
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+                throw;
+            }
+        }
 
+
+        [HttpPut("EmpAcceptBooking/{id}")]
+        public IActionResult EmpAcceptBooking(int id, BookMv book)
+        {
+            try
+            {
+                new BookingDao(_unitOfWork, _mapper).EmpAcceptBooking(id, book);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+                throw;
+            }
+
+
+        }
+
+        [HttpGet("GetBookingBySecretCode/{secretCode}")]
+        public IActionResult GetBookingBySecretCode(string secretCode)
+        {
+            try
+            {
+                var data = new OrderDao(_unitOfWork, _mapper).getTotalOrder(secretCode);
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+                throw;
+            }
+
+        }
+
+        [HttpGet("GetDetailOrderBySecretCode/{secretCode}")]
+        public IActionResult GetDetailOrderBySecretCode(string secretCode)
+        {
+            try
+            {
+                var data = new OrderDao(_unitOfWork, _mapper).getOrderServiceBySecretCode(secretCode);
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+                throw;
+            }
+
+        }
+        [HttpGet("GetDetailOrderByOrderNo/{secretCode}")]
+        public IActionResult GetDetailOrderByOrderNo(string secretCode)
+        {
+            try
+            {
+                var data = new OrderDao(_unitOfWork, _mapper).getOrderServiceByOrderNo(Guid.Parse(secretCode));
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+                throw;
+            }
+
+        }
+
+        [HttpPost("SetOrderDetailService")]
+        public IActionResult SetOrderDetailService([FromBody] OrderService listOrderDetail)
+        {
+            try
+            {
+                new OrderDao(_unitOfWork, _mapper).CreateOrderDetailSerice(listOrderDetail);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BadRequest();
+                throw;
+            }
+        }
     }
 }

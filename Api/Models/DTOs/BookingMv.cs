@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Data.Entities;
 
 namespace Api.Models.DTOs
 {
@@ -15,5 +17,6 @@ namespace Api.Models.DTOs
         public decimal Amount { get; set; }
 
         public GuestMv GuestMv { get; set; }
+        public List<BookRoomMv> BookRoomMvs { get; set; }
     }
 }

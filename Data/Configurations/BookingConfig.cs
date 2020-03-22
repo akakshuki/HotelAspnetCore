@@ -13,7 +13,7 @@ namespace Data.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.SecretCode).HasMaxLength(6);
-            builder.Property(x => x.Amount).HasDefaultValue(0);
+            builder.Property(x => x.Amount).HasDefaultValue(0.0);
             builder.Property(x => x.Status).HasDefaultValue(BookedStatus.booking).HasMaxLength(20);
             builder.Property(x => x.DurationStay).HasDefaultValue(0);
 

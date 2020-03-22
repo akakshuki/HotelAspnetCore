@@ -14,6 +14,9 @@ namespace UnitOfWork
         IRepository<Booking> Bookings { get; }
         IRepository<BookRoom> BookRooms { get; }
 
+        IRepository<Order> Orders { get; }
+        IRepository<OrderDetail> OrderDetails { get; }
+
         void Commit();
     }
 }

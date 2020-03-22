@@ -1,3 +1,4 @@
+﻿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,7 +21,14 @@ namespace AppAdmin
         {
             services.AddControllersWithViews();
 
+            services.AddDistributedMemoryCache();           
+            services.AddSession(cfg => {                    
+                cfg.Cookie.Name = "HotelSession";             
+                cfg.IdleTimeout = new TimeSpan(0, 60, 0);   
+            });
+
             services.AddHttpClient();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +47,8 @@ namespace AppAdmin
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 

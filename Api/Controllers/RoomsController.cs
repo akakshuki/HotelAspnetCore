@@ -82,6 +82,27 @@ namespace Api.Controllers
             }
         }
 
+
+        // GET: api/Rooms/5
+        [HttpGet("GetEmptyRoom/{idCategoryRoom}")]
+        public ActionResult<RoomMv> GetEmptyRoom(int idCategoryRoom)
+        {
+            try
+            {
+                var data = new RoomDao(_unitOfWork, _mapper).GetListEmptyRoomByIdCate(idCategoryRoom);
+                if (data == null)
+                {
+                    return NotFound();
+                }
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
+        }
+
         // POST: api/Rooms
         [HttpPost]
         public IActionResult Post([FromBody]RoomMv room)
@@ -113,6 +134,8 @@ namespace Api.Controllers
                 return NotFound();
             }
         }
+
+
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]

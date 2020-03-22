@@ -7,11 +7,15 @@
     List<BookingMv> listOnline = ViewBag.ListBookingOnline;
     List<BookingMv> listBook = ViewBag.ListBooking;
 }
+@section jsFooter
+{
+    <script src="~/js/bookingController.js"></script>
+}
 
 <div class="container">
     <h3 class="text-center">Manage Booking</h3>
     <div class="row mb-5">
-        <div class="col-md-5">
+        <div class="col-lg-5">
             <h5>Manage Customer</h5>
             <div class="form-group row">
                 <input type="text" name="Search" placeholder="identity code"
@@ -51,9 +55,9 @@
         <div class="col-md-7">
             <h5>List booking</h5>
             <div class="form-group row">
-                <input type="text" name="Search" placeholder="Serect code"
+                <input type="text" name="Search" id="searchCodeInput" placeholder="Serect code"
                        class="col-md-8 form-control mx-3 mt-3" />
-                <button style="max-width: 10rem; max-height: 40px;"
+                <button id="buttonSearchSecretCode" style="max-width: 10rem; max-height: 40px;"
                         class="btn btn-primary col-md-4 mt-3 mx-3">
                     search
                 </button>
@@ -99,7 +103,7 @@
                     <tbody>
                         @foreach (var item in listBook)
                         {
-                            <tr>
+                            <tr class="bookedData" data-secretCode="@item.SecretCode">
                                 <th>@item.SecretCode</th>
                                 <td>@item.BookingDate</td>
                                 <td>@item.CheckIn</td>
@@ -119,10 +123,10 @@
             <a href="@Url.Action("CheckInRoom","Booking")" class="btn btn-warning">checkin room</a>
         </div>
         <div class="col-md-3 mt-1">
-            <a  href="@Url.Action("CheckOutRoom","Booking")" class="btn btn-danger">checkOut room</a>
+            <a href="@Url.Action("CheckOutRoom","Booking")" class="btn btn-danger">checkOut room</a>
         </div>
         <div class="col-md-3 mt-1">
-            <a class="btn btn-info">add service</a>
+            <a href="@Url.Action("AddServices","Booking")" class="btn btn-info">add service</a>
         </div>
     </div>
 </div>

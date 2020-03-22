@@ -1,4 +1,5 @@
-﻿using Data.Entities;
+﻿using System;
+using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,7 +12,9 @@ namespace Data.Configurations
             builder.ToTable("Orders");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.TotalAmount).HasDefaultValue(0);
+            builder.Property(x => x.TotalAmount).HasDefaultValue(0.0);
+            builder.Property(x => x.OrderNo).HasDefaultValue(new Guid());
+
         }
     }
 }

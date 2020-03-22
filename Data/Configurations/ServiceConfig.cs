@@ -14,7 +14,7 @@ namespace Data.Configurations
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Description).IsRequired();
-            builder.Property(x => x.Price).HasDefaultValue(0);
+            builder.Property(x => x.Price).HasDefaultValue(0.0);
             builder.Property(x => x.Status).HasDefaultValue(Status.Active);
 
             builder.HasOne(x => x.CategoryService)

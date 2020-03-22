@@ -16,6 +16,8 @@ namespace UnitOfWork
         private BaseRepository<BookRoom> _bookRooms;
         private BaseRepository<Guest> _guests;
         private BaseRepository<Booking> _bookings;
+        private BaseRepository<Order> _orders;
+        private BaseRepository<OrderDetail> _orderDetails;
 
 
 
@@ -82,6 +84,25 @@ namespace UnitOfWork
             {
                 return _bookRooms ??
                        (_bookRooms = new BaseRepository<BookRoom>(_dbContext));
+            }
+        }
+
+        public IRepository<Order> Orders
+        {
+            get
+            {
+                return _orders ??
+                       (_orders = new BaseRepository<Order>(_dbContext));
+            }
+        }
+
+
+        public IRepository<OrderDetail> OrderDetails
+        {
+            get
+            {
+                return _orderDetails ??
+                       (_orderDetails = new BaseRepository<OrderDetail>(_dbContext));
             }
         }
 

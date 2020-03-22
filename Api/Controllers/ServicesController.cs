@@ -130,5 +130,20 @@ namespace Api.Controllers
                 return NotFound();
             }
         }
+
+        [HttpGet("getServiceByCategoryId/{id}")]
+        public IActionResult GetServiceByCategoryId(int id)
+        {
+            try
+            {
+              var data =  new ServiceDao(_unitOfWork, _mapper).GetServiceByCategoryId(id);
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
+        }
     }
 }

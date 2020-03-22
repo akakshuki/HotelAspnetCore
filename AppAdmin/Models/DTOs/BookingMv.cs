@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AppAdmin.Models.DTOs;
 
+
 namespace AppAdmin.Models.DTOs
 {
     public class BookingMv
@@ -18,6 +19,7 @@ namespace AppAdmin.Models.DTOs
         public string Status { get; set; }
         public decimal Amount { get; set; }
 
+        public List<BookRoomMv> BookRoomMvs { get; set; }
         public GuestMv GuestMv { get; set; }
     }
 }

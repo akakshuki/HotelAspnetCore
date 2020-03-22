@@ -33,6 +33,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">Secret Code</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
                             <th scope="col">Email</th>
@@ -47,7 +48,8 @@
                         @foreach (var item in listBookingOnline)
                         {
                             <tr class="BookingOnlineRow" data-id="@item.Id">
-                                <th >@item.GuestMv.FirstName</th>
+                                <td>@item.SecretCode</td>
+                                <td>@item.GuestMv.FirstName</td>
                                 <td>@item.GuestMv.LastName</td>
                                 <td>@item.GuestMv.Email</td>
                                 <td>@item.GuestMv.Phone</td>
@@ -64,7 +66,8 @@
         <div class="row">
             <div class="col-md-6 mx-1 mt-5 p-5">
                 <h4>Customer</h4>
-                <form class="row" asp-action="Booking" method="post">
+                <form class="row" asp-action="CheckInRoom" method="post">
+                    <input type="hidden" name="Id" id="Id" asp-for="Id" />
                     <div class="form-group col-md-6">
                         <label for="">Họ</label>
                         <input type="text" asp-for="FirstName" name="FirstName" id="FirstName" class="form-control" placeholder="" aria-describedby="helpId">
@@ -115,6 +118,8 @@
                     </div>
                     <input type="hidden" id="RoomIds" asp-for="RoomIds" />
                     <button type="submit" style="margin: auto; max-width: 14rem;" class="btn btn-primary mt-5 col-md-12">Book</button>
+
+                 
                 </form>
             </div>
             <div class="col-md-5 mt-5">

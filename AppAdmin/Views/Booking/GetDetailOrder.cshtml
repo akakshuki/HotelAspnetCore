@@ -1,0 +1,148 @@
+﻿@model AppAdmin.Models.DTOs.OrderMv
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+    decimal serviceAmount = 0;
+
+    decimal totalAmout = 0;
+
+}
+<div class="container">
+    <h1 class="text-center">Detail Booking</h1>
+    <div>Order No. <p>@Model.OrderNo</p></div>
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <div>
+                <h5>Guest</h5>
+                <div>
+                    First Name: <span>@Model.Booking.GuestMv.FirstName</span>
+                </div>
+                <div>
+                    Last Name: <span>@Model.Booking.GuestMv.LastName</span>
+                </div>
+                <div>
+                    Email: <span>@Model.Booking.GuestMv.Email</span>
+                </div>
+                <div>
+                    Phone: <span>@Model.Booking.GuestMv.Phone</span>
+                </div>
+                <div>
+                    IdentityNo: <span>@Model.Booking.GuestMv.IdentityNo</span>
+                </div>
+                <button class="btn btn-success mt-3">Edit</button>
+            </div>
+            <div class="mt-5">
+                <h5>Book</h5>
+                <div>
+                    Secret Code: <span>@Model.Booking.SecretCode</span>
+                </div>
+                <div>
+                    Date booking: <span>@Model.Booking.BookingDate</span>
+                </div>
+                <div>
+                    Check in: <span>@Model.Booking.CheckIn</span>
+                </div>
+                <div>
+                    Check out: <span>@Model.Booking.CheckOut</span>
+                </div>
+                <div>
+                    Duration Stay: <span>@Model.Booking.DurationStay Days</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-8 mt-5">
+            <div>
+                <h5>Rooms: roomnum</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Room No</th>
+                            <th>Category Room</th>
+                            <th>Price</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Booking.BookRoomMvs)
+                        {
+                            <tr>
+                                <td scope="row">@item.Room.RoomNo</td>
+                                <td>@item.Room.CategoryRoomMv.Name</td>
+                                <td>@item.Room.CategoryRoomMv.Price</td>
+                                <td>
+                                    <button class="btn btn-success">
+                                        Change
+                                    </button>
+                                </td>
+                            </tr>
+                          }
+                    </tbody>
+                </table>
+
+                <div class="float-right">
+                    Amount: <span>@Model.Booking.Amount</span>
+                </div>
+            </div>
+            <div class="mt-5">
+                <h5>Service </h5>
+                <div class="mt-4">
+                    <a href="@Url.Action("AddServiceBySecretCode","Booking", new
+                                       {
+                                           orderNo = Model.OrderNo
+
+                                       })" class="btn btn-success">Add More</a>
+                </div>
+                <table class="table mt-4">
+                    <thead>
+                    <tr>
+                        <th>Name service</th>
+                        <th>Category service</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.OrderDetailMvs)
+                    {
+                        <tr>
+                            <td scope="row">@item.ServiceMv.Name</td>
+                            <td>@item.ServiceMv.CategoryServicesMv.Name</td>
+                            <td>@item.ServiceMv.Price</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Amount</td>
+                            <td>
+                                <button class="btn btn-success">
+                                    Change
+                                </button>
+                            </td>
+                        </tr>
+                        totalAmout = totalAmout + item.Amount;
+
+
+                    }
+                    @{
+                        Model.TotalAmount = totalAmout + Model.Booking.Amount;
+                    }
+                    </tbody>
+                </table>
+                
+                <div class="mb-5">
+                    Total Amount service: <span>@totalAmout</span>
+                </div>
+            </div>
+            <div class="float-right mt-5">
+                <div>
+                    Total amount:
+                    <p>@Model.TotalAmount vnd</p>
+                </div>
+                <button class="btn btn-danger">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

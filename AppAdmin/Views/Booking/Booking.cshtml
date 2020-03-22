@@ -57,7 +57,7 @@
                                 Check in:
                             </div>
                             <div class="col-md-12">
-                                <input type="text" asp-for="CheckIn" id="timeCheckIn" class="form-control"/>
+                                <input type="text" asp-for="CheckIn" id="timeCheckIn" class="form-control" />
                                 <span asp-validation-for="CheckIn" class="text-danger"></span>
                             </div>
                         </div>
@@ -66,14 +66,15 @@
                                 Check out:
                             </div>
                             <div class="col-md-12">
-                                <input type="text" asp-for="CheckOut"  id="timeCheckOut" class="form-control"/>
+                                <input type="text" asp-for="CheckOut" id="timeCheckOut" class="form-control" />
                                 <span asp-validation-for="CheckOut" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <input type="hidden" id="RoomIds" asp-for="RoomIds" />
-             <button type="submit" style="margin: auto; max-width: 14rem;" class="btn btn-primary mt-5 col-md-12">Book</button>
+                <button type="submit" style="margin: auto; max-width: 14rem;" class="btn btn-primary mt-5 col-md-12">Book</button>
+
             </form>
         </div>
         <div class="col-md-5 mt-5">

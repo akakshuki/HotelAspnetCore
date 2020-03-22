@@ -89,7 +89,7 @@ namespace AppAdmin.Models.DAO
 
         public async Task<List<RoomMv>> listCategoryRoomById(int id)
         {
-            var res = await _api.GetDataById(url+ "/CountRoom",id);
+            var res = await _api.GetDataById(url+ "/GetEmptyRoom", id);
            var list = new List<RoomMv>();
             try
             {

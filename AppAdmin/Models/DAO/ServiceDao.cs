@@ -85,5 +85,26 @@ namespace AppAdmin.Models.DAO
 
             return update;
         }
+
+        public async Task<List<ServiceMv>> GetServicesByCategoryId(int id)
+        {
+            var data = new List<ServiceMv>();
+            var res = await _api.GetDataById(url + "/getServiceByCategoryId", id);
+            try
+            {
+                if (res.IsSuccessStatusCode)
+                {
+                    var result = res.Content.ReadAsStringAsync().Result;
+                    data = JsonConvert.DeserializeObject<List<ServiceMv>>(result);
+                }
+                return data;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+             
+            }
+        }
     }
 }

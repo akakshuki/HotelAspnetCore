@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Data.Enums;
+using Microsoft.Extensions.DependencyInjection;
 using UnitOfWork;
 
 namespace Api.Models.Dao
@@ -30,6 +32,7 @@ namespace Api.Models.Dao
             {
                 roomMv.CategoryRoomMv = listCate.Where(x => x.Id == roomMv.CategoryRoomId).SingleOrDefault();
             }
+
             return list;
         }
 
@@ -51,13 +54,48 @@ namespace Api.Models.Dao
             return room;
         }
 
+
+
+
+        public List<RoomMv> GetListEmptyRoomByIdCate(int id)
+        
+        {
+            
+            var bookedRoom = _unitOfWork.Bookings.Get().Where(x => x.Status == BookedStatus.booked).ToList();
+            var listRoomBooked = new List<Room>();
+            
+            foreach (var booking in bookedRoom)
+            {
+                var listBook = _unitOfWork.BookRooms.Get().Where(x => x.BookingId == booking.Id).ToList();
+                foreach (var bookRoom in  listBook)
+                {
+                    listRoomBooked.Add(_unitOfWork.Rooms.Get().Where(x=>x.Id == bookRoom.RoomId ).FirstOrDefault());   
+                }
+            }
+
+            var rooms = _unitOfWork.Rooms.Get().ToList();
+            foreach (var room in listRoomBooked)
+            {
+                rooms.Remove(room);
+            }
+
+            var roomEmpty = _mapper.Map<List<RoomMv>>(rooms.Where(x => x.CategoryRoomId == id).ToList());
+
+            return roomEmpty;
+
+        }
+
+
+
+
         public void Create(RoomMv room)
+
         {
             var Room = new Room()
             {
                 RoomNo = room.RoomNo,
                 CategoryRoomId = room.CategoryRoomId
-            
+
             };
             try
             {

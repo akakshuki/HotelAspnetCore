@@ -1,0 +1,55 @@
+<div class="container">
+  <form [formGroup]="form" method="post" (submit)="submitForm(form)">
+    <div class="modal-header">
+      <h5 class="modal-title">Booking</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div >
+          <div class="form-group">
+            <label for="">Họ</label>
+            <input type="text" name="firstName" id="firstName" formControlName="firstName" class="form-control"
+              placeholder="" aria-describedby="firstName">
+            <small id="firstName"
+              *ngIf="checkvalidation('firstName','required')||checkvalidation('firstName','maxlength')"
+              class="text-danger">Họ không được để
+              trống hoặc có quá nhiều kí tự</small>
+          </div>
+          <div class="form-group">
+            <label for="">Tên</label>
+            <input type="text" name="lastName" id="lastName" class="form-control" formControlName="lastName"
+              placeholder="" aria-describedby="lastName">
+            <small id="lastName" *ngIf="checkvalidation('lastName','required')||checkvalidation('lastName','maxlength')"
+              class="text-danger">Tên không được để trống hoặc có quá nhiều kí tự</small>
+          </div>
+          <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input type="text" name="phone" id="phone" formControlName="phone" maxlength=10 class="form-control" placeholder="" aria-describedby="phone">
+            <small id="phone" *ngIf="checkvalidation('phone','required')" class="text-danger">Số điện thoai không được để trống hoặc không hợp lệ</small>
+            <small id="phone" *ngIf="checkvalidation('phone','pattern')" class="text-danger">Số điện thoai không hợp lệ</small>
+          </div>
+          <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" name="email" id="email" class="form-control" formControlName="email" placeholder=""
+              aria-describedby="email">
+            <small id="email" *ngIf="checkvalidation('email','required')" class="text-danger">Email không được để trống
+            </small>
+            <small id="email" *ngIf="checkvalidation('email','email')" class="text-danger">Email không hợp lệ</small>
+          </div>
+          <div class="form-group">
+            <div>
+              Ngay di : <p>{{dateIn}}</p>
+              Ngay ve : <p>{{dateOut}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Đặt phòng</button>
+    </div>
+  </form>
+</div>

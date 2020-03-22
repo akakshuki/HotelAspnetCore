@@ -1,0 +1,114 @@
+﻿@using AppAdmin.Models.DTOs
+@model AppAdmin.Models.DTOs.BookMv
+
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<CategoryRoomMv> categorylist = ViewBag.CategoryRoom;
+}
+
+@section jsFooter
+{
+
+    <script src="~/lib/datepicker/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/lib/datepicker/datepicker/js/datepicker.js"></script>
+    <script src="~/lib/notify.min.js"></script>
+    <script src="~/js/bookingController.js"></script>
+
+}
+<div class="container-fluid">
+    <h1 class="text-center">
+        Booking
+    </h1>
+    <div class="row">
+        <div class="col-md-6 mx-1 mt-5 p-5">
+            <h4>Customer</h4>
+            <form class="row" asp-action="Booking" method="post">
+                <div class="form-group col-md-6">
+                    <label for="">Họ</label>
+                    <input type="text" asp-for="FirstName" name="FirstName" id="FirstName" class="form-control" placeholder="" aria-describedby="helpId">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Tên</label>
+                    <input type="text" asp-for="LastName" name="LastName" id="LastName" class="form-control" placeholder="" aria-describedby="helpId">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="">Số điện thoại</label>
+                    <input type="text" asp-for="Phone" maxlength="10" name="Phone" id="Phone" class="form-control" placeholder="" aria-describedby="helpId">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="">Email</label>
+                    <input type="text" asp-for="Email" name="Email" id="Email" class="form-control" placeholder="" aria-describedby="helpId">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="">Chứng minh nhân dân</label>
+                    <input type="text" asp-for="IdentityNo" name="IdentityNo" id="IdentityNo" maxlength="10" class="form-control" placeholder="" aria-describedby="helpId">
+                    <span asp-validation-for="IdentityNo" class="text-danger"></span>
+                </div>
+                <div class="fomr-goup col-md-12">
+                    <div>Check in time</div>
+                    <div class="row">
+                        <div class="col-md-6 row">
+                            <div class="col-ld-12 ml-3">
+                                Check in:
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" asp-for="CheckIn" id="timeCheckIn" class="form-control" />
+                                <span asp-validation-for="CheckIn" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 row">
+                            <div class="col-ld-12">
+                                Check out:
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" asp-for="CheckOut" id="timeCheckOut" class="form-control" />
+                                <span asp-validation-for="CheckOut" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="RoomIds" asp-for="RoomIds" />
+                <button type="submit" style="margin: auto; max-width: 14rem;" class="btn btn-primary mt-5 col-md-12">Book</button>
+
+            </form>
+        </div>
+        <div class="col-md-5 mt-5">
+            <h4 class="col-md-12 mt-5">Room</h4>
+            <div class="row">
+                <div class="offset-md-6"></div>
+                <div class="dropdown col-md-6 float-right">
+                    <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </button>
+                    <div class=" dropdown-menu" aria-labelledby="dropdownMenu2">
+                        @foreach (var item in categorylist)
+                        {
+                            <button class="categoryItem dropdown-item" data-id="@item.Id" type="button">@item.Name</button>
+                        }
+                    </div>
+                </div>
+                <div id="render" class="col-md-12 border mt-5">
+                    <div style="width: 100%; min-height: 300px; margin: auto;" id="dataRender" class="booking row text-center">
+
+                    </div>
+                    <script id="data-template" type="x-tmpl-mustache">
+                        <div  class="col-md-2  mt-1 mx-2 rounded-pill buttonRoom" data-id="{{id}}">
+                            <div class="dataButton">
+                                <p>
+                                    {{name}}
+                                </p>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

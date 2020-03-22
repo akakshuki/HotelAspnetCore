@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="bg-dark border-dark text-white " id="sidebar-wrapper">
+    <img class="align-content-center m-5" width="130" height="130" src="~/Image/MM.png" />
+    <div class="sidebar-heading mt-5 text-center ">Raddisson</div>
+    <div class="list-group list-group-flush ">
+        <div class="list-group-item list-group-item-action bg-dark ">
+            <a href="#" class="text-white" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage</a>
+            <div class="dropdown-menu  text-white" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="@Url.ActionLink("CategoriesRoom","Manage")">Category Rooms</a>
+                <a class="dropdown-item" href="@Url.ActionLink("Rooms","Manage")">Rooms</a>
+                <a class="dropdown-item" href="@Url.ActionLink("CategoriesService","Manage")">Category Services</a>
+                <a class="dropdown-item" href="@Url.ActionLink("Services","Manage")">Services</a>
+               
+            </div>
+        </div>
+
+        <a href="@Url.ActionLink("Home","Booking")" class="list-group-item list-group-item-action bg-dark  text-white">Booking</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark  text-white">Guest</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark  text-white">History</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark  text-white">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark  text-white">Status</a>
+    </div>
+</div>

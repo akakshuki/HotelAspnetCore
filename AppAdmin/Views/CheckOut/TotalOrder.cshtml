@@ -1,0 +1,172 @@
+﻿@model AppAdmin.Models.DTOs.OrderMv
+@{
+    ViewBag.Title = "Detail Order";
+    Layout = "_Layout";
+    decimal serviceAmount = 0;
+
+    decimal totalAmout = 0;
+
+}
+<div class="container">
+    <h1 class="text-center">Detail Booking</h1>
+    <div>Order No. <p>@Model.OrderNo</p></div>
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <div>
+                <h5>Guest</h5>
+                <div>
+                    First Name: <span>@Model.Booking.GuestMv.FirstName</span>
+                </div>
+                <div>
+                    Last Name: <span>@Model.Booking.GuestMv.LastName</span>
+                </div>
+                <div>
+                    Email: <span>@Model.Booking.GuestMv.Email</span>
+                </div>
+                <div>
+                    Phone: <span>@Model.Booking.GuestMv.Phone</span>
+                </div>
+                <div>
+                    IdentityNo: <span>@Model.Booking.GuestMv.IdentityNo</span>
+                </div>
+            </div>
+            <div class="mt-5">
+                <h5>Book</h5>
+                <div>
+                    Secret Code: <span>@Model.Booking.SecretCode</span>
+                </div>
+                <div>
+                    Date booking: <span>@Model.Booking.BookingDate</span>
+                </div>
+                <div>
+                    Check in: <span>@Model.Booking.CheckIn</span>
+                </div>
+                <div>
+                    Check out: <span>@Model.Booking.CheckOut</span>
+                </div>
+                <div>
+                    Duration Stay: <span>@Model.Booking.DurationStay Days</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-8 mt-5">
+            <div>
+                <h5>Rooms: roomnum</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Room No</th>
+                            <th>Category Room</th>
+                            <th>Price</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Booking.BookRoomMvs)
+                        {
+                            <tr>
+                                <td scope="row">@item.Room.RoomNo</td>
+                                <td>@item.Room.CategoryRoomMv.Name</td>
+                                <td>@item.Room.CategoryRoomMv.Price</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="float-right">
+                    Amount: <span>@Model.Booking.Amount</span>
+                </div>
+            </div>
+            <div class="mt-5">
+                <h5>Service </h5>
+
+                <table class="table mt-4">
+                    <thead>
+                        <tr>
+                            <th>Name service</th>
+                            <th>Category service</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderDetailMvs)
+                        {
+                            <tr>
+                                <td scope="row">@item.ServiceMv.Name</td>
+                                <td>@item.ServiceMv.CategoryServicesMv.Name</td>
+                                <td>@item.ServiceMv.Price</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Amount</td>
+
+                            </tr>
+                            totalAmout = totalAmout + item.Amount;
+
+
+                        }
+                        @{
+                            Model.TotalAmount = totalAmout + Model.Booking.Amount;
+                        }
+                    </tbody>
+                </table>
+
+                <div class="mb-5">
+                    Total Amount service: <span>@totalAmout</span>
+                </div>
+            </div>
+            <div class="float-right mt-5">
+                <div>
+                    Total amount:
+                    <p>@Model.TotalAmount vnd</p>
+                </div>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#Payment">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="Payment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <h4>Choose One</h4>
+                    <div class="row">
+                        <div class="col-md-6 m-1">
+                            <a href="@Url.Action("PaymentWithMomo","CheckOut",new
+                                     {
+                                         orderNo = Model.OrderNo,
+                                         money =Model.TotalAmount
+                                     })">
+                                <img width="100" height="100" src="~/Image/logo-momo.png" />
+                            </a>
+                        </div>
+                        <div class="col-md-6 m-1">
+                            <a href="@Url.Action("PaymentWithCash","CheckOut",new
+                                    {
+                                        orderNo = Model.OrderNo,
+                                        money =Model.TotalAmount
+                                    })">
+                                <img width="100" height="100" src="~/Image/MoneyLogo.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

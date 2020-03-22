@@ -1,0 +1,38 @@
+﻿@model List<AppAdmin.Models.DTOs.CategoryServicesMv>
+@{
+    ViewData["Title"] = "Category Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container ">
+    <h3 class="text-center">
+        Category Room
+    </h3>
+
+    <div>
+        <a class="text-success " href="@Url.Action("CreateCategoryService")">Create</a>
+    </div>
+    <table class="col-md-12 table">
+        <thead>
+            <tr>
+
+                <th scope="col">Name</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+
+                    <td>@item.Name</td>
+                    <td>
+                        @Html.ActionLink("Detail", "DetailCategoryService", new { id = @item.Id })
+                        |@Html.ActionLink("Delete", "DeleteCategoryService", new { id = @item.Id })
+                        |@Html.ActionLink("Update", "UpdateCategoryService", new { id = @item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,43 @@
+﻿@model AppAdmin.Models.DTOs.CategoryRoomMv
+
+@{
+    ViewData["Title"] = "DetailCategoryRoom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div>
+        <h4>CategoryRoomMv</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(Model.Description)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @*@Html.ActionLink("Edit", "", new { /* id = Model.PrimaryKey */ })*@ |
+        <a asp-action="CategoriesRoom">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "HotelDB": "Server=DESKTOP-61G807S\\AKAKSHUKI;Database=HotelProject;Trusted_Connection=True;"
+  }
+}

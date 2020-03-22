@@ -1,0 +1,48 @@
+﻿@model AppAdmin.Models.DTOs.CategoryRoomMv
+
+@{
+    ViewData["Title"] = "UpdateCategoryRoom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter{
+    <script src="~/vendors/ckeditor/ckeditor.js"></script>
+    <script src="~/vendors/ckeditor/adapters/jquery.js"></script>
+    <script>
+        $("#rtxBlogContent").ckeditor();
+    </script>
+}
+
+<div class="container ">
+    <h4>Creat Category Rooms</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="UpdateCategoryRoom" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Id" type="hidden" class="form-control" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" id="rtxBlogContent" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="CategoriesRoom">Back to List</a>
+    </div>
+</div>

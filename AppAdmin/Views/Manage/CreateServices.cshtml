@@ -1,0 +1,55 @@
+﻿@using AppAdmin.Models.DTOs
+@model AppAdmin.Models.DTOs.ServiceMv
+
+@{
+    ViewData["Title"] = "CreateService";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listCategoryService = (IEnumerable<CategoryServicesMv>)ViewBag.listCategoryService;
+}
+
+@section jsFooter{
+    <script src="~/vendors/ckeditor/ckeditor.js"></script>
+    <script src="~/vendors/ckeditor/adapters/jquery.js"></script>
+    <script>
+        $("#rtxBlogContent").ckeditor();
+    </script>
+}
+
+<div class="container ">
+    <h4>Create Category Rooms</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="CreateServices" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea asp-for="Description" id="rtxBlogContent" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryServiceId" class="control-label"></label>
+                    <select asp-for="CategoryServiceId" asp-items="@(new SelectList(listCategoryService,"Id","Name"))" id="rtxBlogContent" class="form-control"></select>
+                    <span asp-validation-for="CategoryServiceId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Services">Back to List</a>
+    </div>
+</div>

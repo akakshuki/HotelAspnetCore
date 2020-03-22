@@ -32,6 +32,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWork", "UnitOfWork\Un
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppAdmin", "AppAdmin\AppAdmin.csproj", "{7FB700C0-1951-4605-A3CC-9454A753EF57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MomoConnector", "MomoConnector\MomoConnector.csproj", "{B4DB8D16-4311-4F4A-8603-2C5FECA75114}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{7FB700C0-1951-4605-A3CC-9454A753EF57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FB700C0-1951-4605-A3CC-9454A753EF57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FB700C0-1951-4605-A3CC-9454A753EF57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4DB8D16-4311-4F4A-8603-2C5FECA75114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4DB8D16-4311-4F4A-8603-2C5FECA75114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4DB8D16-4311-4F4A-8603-2C5FECA75114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4DB8D16-4311-4F4A-8603-2C5FECA75114}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

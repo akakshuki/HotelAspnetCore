@@ -278,8 +278,9 @@ namespace Api.Models.Dao
                     };
                     _unitOfWork.BookRooms.Insert(bookRoom);
                     _unitOfWork.Commit();
-                    new OrderDao(_unitOfWork,_mapper).CreateOrder(booking.Id);
+                  
                 }
+                new OrderDao(_unitOfWork, _mapper).CreateOrder(booking.Id);
             }
             catch (Exception e)
             {

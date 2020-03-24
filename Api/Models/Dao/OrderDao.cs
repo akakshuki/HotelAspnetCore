@@ -46,7 +46,7 @@ namespace Api.Models.Dao
 
 
 
-        public OrderMv getTotalOrder(string secretCode)
+        public OrderMv GetTotalOrder(string secretCode)
         {
             var booking = _unitOfWork.Bookings.Get().SingleOrDefault(x => x.SecretCode == secretCode);
 

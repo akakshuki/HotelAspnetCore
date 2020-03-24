@@ -71,17 +71,24 @@
                             <th scope="col">Booking date</th>
                             <th scope="col">CheckIn date</th>
                             <th scope="col">Status</th>
+                            <th>#</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in listOnline)
                         {
-                            <tr>
-                                <th>@item.SecretCode</th>
-                                <td>@item.BookingDate</td>
-                                <td>@item.CheckIn</td>
-                                <td>@item.Status</td>
-                            </tr>
+                        <tr>
+                            <th>@item.SecretCode</th>
+                            <td>@item.BookingDate</td>
+                            <td>@item.CheckIn</td>
+                            <td>@item.Status</td>
+                            <td>
+                                <a href="@Url.Action("CancelBooking","Booking",new
+                                         {
+                                             secretCode = item.SecretCode
+                                         })" class="btn btn-danger">Cancel</a>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
@@ -98,6 +105,7 @@
                             <th scope="col">Booking date</th>
                             <th scope="col">CheckIn date</th>
                             <th scope="col">Status</th>
+                          
                         </tr>
                     </thead>
                     <tbody>
@@ -108,7 +116,9 @@
                                 <td>@item.BookingDate</td>
                                 <td>@item.CheckIn</td>
                                 <td>@item.Status</td>
+                               
                             </tr>
+
                         }
                     </tbody>
                 </table>

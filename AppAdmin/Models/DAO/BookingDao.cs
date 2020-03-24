@@ -204,5 +204,18 @@ namespace AppAdmin.Models.DAO
             
 
         }
+
+        public async Task<List<BookingMv>> GetAllListBooking()
+        {
+            var getTask = await _api.GetData(url + "/GetAllBooking");
+            var bookingMv = new List<BookingMv>();
+            if (getTask.IsSuccessStatusCode)
+            {
+                var result = getTask.Content.ReadAsStringAsync().Result;
+                bookingMv = JsonConvert.DeserializeObject<List<BookingMv>>(result);
+            }
+            return bookingMv;
+
+        }
     }
 }

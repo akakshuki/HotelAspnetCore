@@ -170,7 +170,7 @@ namespace Api.Controllers
         {
             try
             {
-                var data = new OrderDao(_unitOfWork, _mapper).getTotalOrder(secretCode);
+                var data = new OrderDao(_unitOfWork, _mapper).GetTotalOrder(secretCode);
                 return Ok(data);
             }
             catch (Exception e)
@@ -230,5 +230,23 @@ namespace Api.Controllers
                 throw;
             }
         }
+
+
+        [HttpGet("GetAllBooking")]
+        public IActionResult GetAllBooking()
+        {
+            try
+            {
+                var data = new BookingDao(_unitOfWork,_mapper).GetAllListBooking();
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+                throw;
+            }
+        }
+
     }
 }

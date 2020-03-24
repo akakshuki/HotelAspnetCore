@@ -1,0 +1,77 @@
+﻿@model IEnumerable<AppAdmin.Models.DTOs.BookingMv>
+
+    @{
+        ViewData["Title"] = "HistoryBooking";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h1>HistoryBooking</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GuestMv.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CheckIn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CheckOut)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DurationStay)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SecretCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GuestMv.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookingDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CheckIn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CheckOut)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DurationStay)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SecretCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

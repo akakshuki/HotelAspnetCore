@@ -61,5 +61,21 @@ namespace Api.Controllers
             }
 
         }
+
+        [HttpGet("CancelBooking/{secretCode}")]
+        public IActionResult CancelBooking(string secretCode)
+        {
+            try
+            {
+                new OrderDao(_unitOfWork,_mapper).CancelBooking(secretCode);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
+
+        }
     }
 }

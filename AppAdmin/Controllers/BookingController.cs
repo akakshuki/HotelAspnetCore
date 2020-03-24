@@ -183,7 +183,7 @@ namespace AppAdmin.Controllers
                         {
                             if (orderService.Id == idService)
                             {
-                                orderService.Quantity ++;
+                                orderService.Quantity++;
                             }
                         }
                     }
@@ -245,7 +245,7 @@ namespace AppAdmin.Controllers
 
             return Json(new
             {
-                 data = JsonConvert.DeserializeObject<List<OrderService>>(new SessionCommon(HttpContext).DataGet())
+                data = JsonConvert.DeserializeObject<List<OrderService>>(new SessionCommon(HttpContext).DataGet())
             });
         }
 
@@ -271,6 +271,27 @@ namespace AppAdmin.Controllers
 
                 Console.WriteLine(e);
                 throw;
+            }
+
+        }
+
+        public IActionResult CancelBooking(string secretCode)
+        {
+            var res = new OrderDao().CancelBooking(secretCode);
+            if (res.IsCompletedSuccessfully)
+            {
+                ViewBag.ListGuest = new BookingDao().getGuestList();
+                ViewBag.ListBookingOnline = new BookingDao().getListBookingOnline();
+                ViewBag.ListBooking = new BookingDao().getListBooking();
+                return RedirectToAction("Home");
+
+            }
+            else
+            {
+                ViewBag.ListGuest = new BookingDao().getGuestList();
+                ViewBag.ListBookingOnline = new BookingDao().getListBookingOnline();
+                ViewBag.ListBooking = new BookingDao().getListBooking();
+                return RedirectToAction("Home");
             }
         }
     }

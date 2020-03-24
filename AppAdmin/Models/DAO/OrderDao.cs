@@ -54,6 +54,11 @@ namespace AppAdmin.Models.DAO
 
             return await res.Result.Content.ReadAsStringAsync();
         }
-        
+
+        public async Task<HttpResponseMessage> CancelBooking(string secretCode)
+        {
+            var res = await _api.GetDataById(url + "/CancelBooking", secretCode);
+            return res;
+        }
     }
 }

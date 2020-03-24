@@ -288,5 +288,15 @@ namespace Api.Models.Dao
                 throw;
             }
         }
+
+        public List<BookingMv> GetAllListBooking()
+        {
+            var listBooking = _mapper.Map<List<BookingMv>>(_unitOfWork.Bookings.Get());
+            foreach (var bookingMv in listBooking)
+            {
+                bookingMv.GuestMv = _mapper.Map<GuestMv>(_unitOfWork.Guests.GetByID(bookingMv.GuestId));
+            }    
+            return listBooking;
+        }
     }
 }

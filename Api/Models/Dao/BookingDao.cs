@@ -195,6 +195,13 @@ namespace Api.Models.Dao
             return list;
         }
 
+        public BookingMv GetBookingByCode(string secretCode)
+        {
+           var data = _mapper.Map<BookingMv>(_unitOfWork.Bookings.Get().SingleOrDefault(x=>x.SecretCode== secretCode));
+           data.GuestMv = _mapper.Map<GuestMv>(_unitOfWork.Guests.GetByID(data.GuestId));
+           return data;
+        }
+
         public List<BookingMv> GetListBooking()
         {
             var data = _unitOfWork.Bookings.Get().Where(x => x.Status == BookedStatus.booked).OrderByDescending(x => x.BookingDate).ToList();

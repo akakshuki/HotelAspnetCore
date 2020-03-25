@@ -1,0 +1,14 @@
+<div class="container mt-5">
+    <p>Họ:    {{this.bookingData.guestMv.firstName}}</p>
+    <p>Tên:    {{this.bookingData.guestMv.lastName}}</p> 
+    <p>Email:    {{this.bookingData.guestMv.email}}</p>
+    <p>Điện thoại:    {{this.bookingData.guestMv.phone}}</p>
+    <p>CMT:    {{this.bookingData.guestMv.identityNo}}</p>
+    <p>Mã bí mật:    {{this.bookingData.secretCode}}</p>
+    <p>Ngày Checkin:    {{this.bookingData.checkIn}}</p>
+    <p>Ngày CheckOut:    {{this.bookingData.checkOut}}</p>
+    <p>Trạng thái:    {{this.bookingData.status}}</p>
+
+<button class="btn btn-danger" (click)="CancelBooking()" >Hủy đặt</button>
+</div>
+

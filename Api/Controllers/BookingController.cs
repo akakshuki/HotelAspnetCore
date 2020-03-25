@@ -227,7 +227,7 @@ namespace Api.Controllers
             {
                 Console.WriteLine(e);
                 return BadRequest();
-                throw;
+                
             }
         }
 
@@ -248,5 +248,20 @@ namespace Api.Controllers
             }
         }
 
+ [HttpGet("GetBookingByCode/{secretCode}")]
+        public IActionResult GetBookingByCode(string secretCode)
+        {
+            try
+            {
+                var data = new BookingDao(_unitOfWork,_mapper).GetBookingByCode(secretCode);
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+                throw;
+            }
+        }
     }
 }

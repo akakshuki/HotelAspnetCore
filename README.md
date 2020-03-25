@@ -8,7 +8,10 @@
 - Entity Frameworkd core 3.1 
 
 ## How config run
-- no things
+- config some base Url
+- rebuil project
+-wiht angular : you must run "npm install"
+-database cofirst : have syntax : "add-migration name" and "update-database"
 
 ## Pattern
   - generic repository pattern

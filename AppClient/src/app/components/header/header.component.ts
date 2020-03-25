@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  formSecretCode: FormGroup;
+
+  constructor(private fb: FormBuilder, private route: Router) { }
 
   ngOnInit() {
+    this.formSecretCode = this.fb.group({
+      searchInput: new FormControl()
+    });
+  }
+
+  searchBooking(form: FormGroup) {
+
+    this.route.navigate(['booking/' + form.value.searchInput]);
   }
 
 }

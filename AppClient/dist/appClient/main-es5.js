@@ -363,7 +363,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"container\">\r\n  <form [formGroup]=\"form\" method=\"post\" (submit)=\"submitForm(form)\">\r\n    <div class=\"modal-header\">\r\n      <h5 class=\"modal-title\">Booking</h5>\r\n      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n      <div class=\"container-fluid\">\r\n        <div >\r\n          <div class=\"form-group\">\r\n            <label for=\"\">Họ</label>\r\n            <input type=\"text\" name=\"firstName\" id=\"firstName\" formControlName=\"firstName\" class=\"form-control\"\r\n              placeholder=\"\" aria-describedby=\"firstName\">\r\n            <small id=\"firstName\"\r\n              *ngIf=\"checkvalidation('firstName','required')||checkvalidation('firstName','maxlength')\"\r\n              class=\"text-danger\">Họ không được để\r\n              trống hoặc có quá nhiều kí tự</small>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"\">Tên</label>\r\n            <input type=\"text\" name=\"lastName\" id=\"lastName\" class=\"form-control\" formControlName=\"lastName\"\r\n              placeholder=\"\" aria-describedby=\"lastName\">\r\n            <small id=\"lastName\" *ngIf=\"checkvalidation('lastName','required')||checkvalidation('lastName','maxlength')\"\r\n              class=\"text-danger\">Tên không được để trống hoặc có quá nhiều kí tự</small>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"phone\">Số điện thoại</label>\r\n            <input type=\"text\" name=\"phone\" id=\"phone\" formControlName=\"phone\" class=\"form-control\" placeholder=\"\" aria-describedby=\"phone\">\r\n            <small id=\"phone\" *ngIf=\"checkvalidation('phone','required')\" class=\"text-danger\">Số điện thoai không được để trống hoặc không hợp lệ</small>\r\n            <small id=\"email\" *ngIf=\"checkvalidation('phone','pattern')\" class=\"text-danger\">Số điện thoai không hợp lệ</small>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"\">Email</label>\r\n            <input type=\"text\" name=\"email\" id=\"email\" class=\"form-control\" formControlName=\"email\" placeholder=\"\"\r\n              aria-describedby=\"email\">\r\n            <small id=\"email\" *ngIf=\"checkvalidation('email','required')\" class=\"text-danger\">Email không được để trống\r\n            </small>\r\n            <small id=\"email\" *ngIf=\"checkvalidation('email','email')\" class=\"text-danger\">Email không hợp lệ</small>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <div>\r\n              Ngay di : <p>{{dateIn}}</p>\r\n              Ngay ve : <p>{{dateOut}}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n      <button type=\"submit\" class=\"btn btn-primary\">Đặt phòng</button>\r\n    </div>\r\n  </form>\r\n</div>\r\n";
+    __webpack_exports__["default"] = "<div class=\"container\">\r\n  <form [formGroup]=\"form\" method=\"post\" (submit)=\"submitForm(form)\">\r\n    <div class=\"modal-header\">\r\n      <h5 class=\"modal-title\">Booking</h5>\r\n      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n      <div class=\"container-fluid\">\r\n        <div >\r\n          <div class=\"form-group\">\r\n            <label for=\"\">Họ</label>\r\n            <input type=\"text\" name=\"firstName\" id=\"firstName\" formControlName=\"firstName\" class=\"form-control\"\r\n              placeholder=\"\" aria-describedby=\"firstName\">\r\n            <small id=\"firstName\"\r\n              *ngIf=\"checkvalidation('firstName','required')||checkvalidation('firstName','maxlength')\"\r\n              class=\"text-danger\">Họ không được để\r\n              trống hoặc có quá nhiều kí tự</small>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"\">Tên</label>\r\n            <input type=\"text\" name=\"lastName\" id=\"lastName\" class=\"form-control\" formControlName=\"lastName\"\r\n              placeholder=\"\" aria-describedby=\"lastName\">\r\n            <small id=\"lastName\" *ngIf=\"checkvalidation('lastName','required')||checkvalidation('lastName','maxlength')\"\r\n              class=\"text-danger\">Tên không được để trống hoặc có quá nhiều kí tự</small>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"phone\">Số điện thoại</label>\r\n            <input type=\"text\" name=\"phone\" id=\"phone\" formControlName=\"phone\" maxlength=10 class=\"form-control\" placeholder=\"\" aria-describedby=\"phone\">\r\n            <small id=\"phone\" *ngIf=\"checkvalidation('phone','required')\" class=\"text-danger\">Số điện thoai không được để trống hoặc không hợp lệ</small>\r\n            <small id=\"phone\" *ngIf=\"checkvalidation('phone','pattern')\" class=\"text-danger\">Số điện thoai không hợp lệ</small>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"\">Email</label>\r\n            <input type=\"text\" name=\"email\" id=\"email\" class=\"form-control\" formControlName=\"email\" placeholder=\"\"\r\n              aria-describedby=\"email\">\r\n            <small id=\"email\" *ngIf=\"checkvalidation('email','required')\" class=\"text-danger\">Email không được để trống\r\n            </small>\r\n            <small id=\"email\" *ngIf=\"checkvalidation('email','email')\" class=\"text-danger\">Email không hợp lệ</small>\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <div>\r\n              Ngay di : <p>{{dateIn}}</p>\r\n              Ngay ve : <p>{{dateOut}}</p>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n      <button type=\"submit\" [disabled]=\"!form.valid\" class=\"btn btn-primary\">Đặt phòng</button>\r\n    </div>\r\n  </form>\r\n</div>\r\n";
     /***/
   },
 
@@ -383,7 +383,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div *ngFor=\"let data of categoryrooms\">\n    <p> {{data.name}} </p>\n    <p>{{data.price}}</p>\n   <div class=\"container\" [innerHTML]=\"data.description\"></div>\n</div>\n";
+    __webpack_exports__["default"] = "<div *ngFor=\"let data of categoryrooms\">\r\n    <p> {{data.name}} </p>\r\n    <p>{{data.price}}</p>\r\n   <div class=\"container\" [innerHTML]=\"data.description\"></div>\r\n</div>\r\n";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/components/detail-booking/detail-booking.component.html":
+  /*!***************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/detail-booking/detail-booking.component.html ***!
+    \***************************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppComponentsDetailBookingDetailBookingComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<p>detail-booking works!</p>\n";
     /***/
   },
 
@@ -423,7 +443,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<header>\r\n  <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n    <a class=\"navbar-brand\" href=\"#\">\r\n      <img src=\"../../../assets/icon/MM.png\" width=\"60\" height=\"60\" alt=\"\">\r\n    </a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n      aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav mr-auto\">\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\r\n        </li>\r\n        <li class=\"nav-item \">\r\n          <a class=\"nav-link\" href=\"#\">Booking</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">Servires</a>\r\n        </li>\r\n        <li class=\"nav-item dropdown\">\r\n          <a class=\"nav-link\" href=\"#\">\r\n            Contact\r\n          </a>\r\n      </ul>\r\n      <form class=\"form-inline my-2 my-lg-0\">\r\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\r\n        <button class=\"btn btn-outline-light my-2 my-sm-0\" type=\"submit\"><i class=\"fas fa-search    \"></i></button>\r\n      </form>\r\n    </div>\r\n  </nav>\r\n</header>\r\n";
+    __webpack_exports__["default"] = "<header>\r\n  <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n    <a class=\"navbar-brand\" href=\"#\">\r\n      <img src=\"../../../assets/icon/MM.png\" width=\"60\" height=\"60\" alt=\"\">\r\n    </a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n      aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav mr-auto\">\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\r\n        </li>\r\n        <li class=\"nav-item \">\r\n          <a class=\"nav-link\" href=\"#\">Booking</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">Servires</a>\r\n        </li>\r\n        <li class=\"nav-item dropdown\">\r\n          <a class=\"nav-link\" href=\"#\">\r\n            Contact\r\n          </a>\r\n      </ul>\r\n      <form class=\"form-inline my-2 my-lg-0\" [formGroup]=\"formSecretCode\" (ngSubmit)=\"searchBooking(formSecretCode)\">\r\n        <input class=\"form-control mr-sm-2\" type=\"search\" formControlName=\"searchInput\" name=\"searchInput\"  placeholder=\"Secret Code Search\" aria-label=\"Search\">\r\n        <button class=\"btn btn-outline-light my-2 my-sm-0\" type=\"submit\"><i class=\"fas fa-search \"></i></button>\r\n      </form>\r\n    </div>\r\n  </nav>\r\n</header>\r\n";
     /***/
   },
 
@@ -1089,6 +1109,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _components_main_page_main_page_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ./components/main-page/main-page.component */
     "./src/app/components/main-page/main-page.component.ts");
+    /* harmony import */
+
+
+    var _app_components_detail_booking_detail_booking_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../app/components/detail-booking/detail-booking.component */
+    "./src/app/components/detail-booking/detail-booking.component.ts");
 
     var routes = [{
       path: '',
@@ -1096,6 +1122,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'categoryRoom',
       component: _components_categoryroom_categoryroom_component__WEBPACK_IMPORTED_MODULE_3__["CategoryroomComponent"]
+    }, {
+      path: 'booking/:id',
+      component: _app_components_detail_booking_detail_booking_component__WEBPACK_IMPORTED_MODULE_5__["DetailBookingComponent"]
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -1276,13 +1305,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _components_categoryroom_categoryroom_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! ./components/categoryroom/categoryroom.component */
     "./src/app/components/categoryroom/categoryroom.component.ts");
+    /* harmony import */
+
+
+    var _components_detail_booking_detail_booking_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! ./components/detail-booking/detail-booking.component */
+    "./src/app/components/detail-booking/detail-booking.component.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
     };
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _app_components_header_header_component__WEBPACK_IMPORTED_MODULE_8__["HeaderComponent"], _app_components_footer_footer_component__WEBPACK_IMPORTED_MODULE_9__["FooterComponent"], _components_main_page_main_page_component__WEBPACK_IMPORTED_MODULE_10__["MainPageComponent"], _components_booking_booking_component__WEBPACK_IMPORTED_MODULE_11__["BookingComponent"], _components_categoryroom_categoryroom_component__WEBPACK_IMPORTED_MODULE_12__["CategoryroomComponent"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _app_components_header_header_component__WEBPACK_IMPORTED_MODULE_8__["HeaderComponent"], _app_components_footer_footer_component__WEBPACK_IMPORTED_MODULE_9__["FooterComponent"], _components_main_page_main_page_component__WEBPACK_IMPORTED_MODULE_10__["MainPageComponent"], _components_booking_booking_component__WEBPACK_IMPORTED_MODULE_11__["BookingComponent"], _components_categoryroom_categoryroom_component__WEBPACK_IMPORTED_MODULE_12__["CategoryroomComponent"], _components_detail_booking_detail_booking_component__WEBPACK_IMPORTED_MODULE_13__["DetailBookingComponent"]],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"], ng2_daterangepicker__WEBPACK_IMPORTED_MODULE_4__["Daterangepicker"]],
       providers: [_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
@@ -1365,16 +1400,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var src_app_services_booking_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! src/app/services/booking.service */
     "./src/app/services/booking.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
 
     var BookingComponent =
     /*#__PURE__*/
     function () {
-      function BookingComponent(formbuilder, validationService, bookingSerive) {
+      function BookingComponent(formbuilder, validationService, bookingSerive, route) {
         _classCallCheck(this, BookingComponent);
 
         this.formbuilder = formbuilder;
         this.validationService = validationService;
         this.bookingSerive = bookingSerive;
+        this.route = route;
         this.booking = {
           LastName: "",
           FirstName: '',
@@ -1413,8 +1455,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             CheckOut: this.dateOut,
             Id: 0
           };
-          this.bookingSerive.bookingPost(this.booking);
-          console.log(this.booking);
+          this.bookingSerive.bookingPost(this.booking).subscribe(function (res) {
+            alert("success");
+            location.reload();
+          });
         }
       }]);
 
@@ -1428,6 +1472,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: src_app_services_validation_service__WEBPACK_IMPORTED_MODULE_4__["ValidationService"]
       }, {
         type: src_app_services_booking_service__WEBPACK_IMPORTED_MODULE_5__["BookingService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
       }];
     };
 
@@ -1541,6 +1587,120 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       /*! ./categoryroom.component.css */
       "./src/app/components/categoryroom/categoryroom.component.css")).default]
     })], CategoryroomComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/components/detail-booking/detail-booking.component.css":
+  /*!************************************************************************!*\
+    !*** ./src/app/components/detail-booking/detail-booking.component.css ***!
+    \************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppComponentsDetailBookingDetailBookingComponentCss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZGV0YWlsLWJvb2tpbmcvZGV0YWlsLWJvb2tpbmcuY29tcG9uZW50LmNzcyJ9 */";
+    /***/
+  },
+
+  /***/
+  "./src/app/components/detail-booking/detail-booking.component.ts":
+  /*!***********************************************************************!*\
+    !*** ./src/app/components/detail-booking/detail-booking.component.ts ***!
+    \***********************************************************************/
+
+  /*! exports provided: DetailBookingComponent */
+
+  /***/
+  function srcAppComponentsDetailBookingDetailBookingComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DetailBookingComponent", function () {
+      return DetailBookingComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_services_booking_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/app/services/booking.service */
+    "./src/app/services/booking.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+
+    var DetailBookingComponent =
+    /*#__PURE__*/
+    function () {
+      function DetailBookingComponent(service, route) {
+        _classCallCheck(this, DetailBookingComponent);
+
+        this.service = service;
+        this.route = route;
+      }
+
+      _createClass(DetailBookingComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.getBooking();
+        }
+      }, {
+        key: "getBooking",
+        value: function getBooking() {
+          var _this2 = this;
+
+          var data = this.route.snapshot.paramMap.get("id");
+          this.service.getBookingBySecretCode(data).subscribe(function (res) {
+            return _this2.bookingData = res;
+          });
+        }
+      }]);
+
+      return DetailBookingComponent;
+    }();
+
+    DetailBookingComponent.ctorParameters = function () {
+      return [{
+        type: src_app_services_booking_service__WEBPACK_IMPORTED_MODULE_2__["BookingService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]
+      }];
+    };
+
+    DetailBookingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-detail-booking',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./detail-booking.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/components/detail-booking/detail-booking.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./detail-booking.component.css */
+      "./src/app/components/detail-booking/detail-booking.component.css")).default]
+    })], DetailBookingComponent);
     /***/
   },
 
@@ -1674,21 +1834,53 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
 
     var HeaderComponent =
     /*#__PURE__*/
     function () {
-      function HeaderComponent() {
+      function HeaderComponent(fb, route) {
         _classCallCheck(this, HeaderComponent);
+
+        this.fb = fb;
+        this.route = route;
       }
 
       _createClass(HeaderComponent, [{
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          this.formSecretCode = this.fb.group({
+            searchInput: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]()
+          });
+        }
+      }, {
+        key: "searchBooking",
+        value: function searchBooking(form) {
+          this.route.navigate(['booking/' + form.value.searchInput]);
+        }
       }]);
 
       return HeaderComponent;
     }();
+
+    HeaderComponent.ctorParameters = function () {
+      return [{
+        type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+      }];
+    };
 
     HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-header',
@@ -1923,10 +2115,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "bookingPost",
         value: function bookingPost(booking) {
-          debugger;
-          this.client.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + this.object, JSON.stringify(booking), {
+          var data = JSON.stringify(booking);
+          console.log(data);
+          return this.client.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + this.object + "/guestpost", JSON.stringify(booking), {
             headers: this.headers
           }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+        }
+      }, {
+        key: "getBookingBySecretCode",
+        value: function getBookingBySecretCode(serectCode) {
+          return this.client.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + this.object + "/GetBookingByCode/" + serectCode).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["retry"])(1));
         }
       }]);
 
@@ -2174,7 +2372,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var environment = {
       production: false,
-      baseUrl: "https://localhost:44333/api/"
+      baseUrl: "https://localhost:5001/api/"
     };
     /*
      * For easier debugging in development mode, you can import the following file

@@ -15,6 +15,7 @@ import { FooterComponent } from '../app/components/footer/footer.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { CategoryroomComponent } from './components/categoryroom/categoryroom.component';
+import { DetailBookingComponent } from './components/detail-booking/detail-booking.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CategoryroomComponent } from './components/categoryroom/categoryroom.co
     FooterComponent,
     MainPageComponent,
     BookingComponent,
-    CategoryroomComponent
+    CategoryroomComponent,
+    DetailBookingComponent
   ],
   imports: [
     BrowserModule,

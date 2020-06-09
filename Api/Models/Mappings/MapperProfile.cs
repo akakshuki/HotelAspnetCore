@@ -1,6 +1,7 @@
 ﻿using Api.Models.DTOs;
 using AutoMapper;
 using Data.Entities;
+using Room = Data.Entities.Room;
 
 namespace Api.Models.Mappings
 {

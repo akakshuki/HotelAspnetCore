@@ -10,7 +10,7 @@ namespace Api.Configuration
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder
-                        .WithOrigins("http://localhost:4433", "http://localhost:4200", "http://localhost:44338")
+                        .AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });

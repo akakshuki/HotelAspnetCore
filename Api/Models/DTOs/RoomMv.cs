@@ -11,4 +11,10 @@ namespace Api.Models.DTOs
 
         public CategoryRoomMv CategoryRoomMv { get; set; }
     }
+
+    public class RoomApi
+    {
+        public string RoomNo { get; set; }
+        public int CategoryRoomId { get; set; }
+    }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using Data.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using UnitOfWork;
+using Room = Data.Entities.Room;
 
 namespace Api.Models.Dao
 {
@@ -85,9 +86,7 @@ namespace Api.Models.Dao
 
         }
 
-
-
-
+        
         public void Create(RoomMv room)
 
         {
@@ -135,6 +134,26 @@ namespace Api.Models.Dao
             try
             {
                 _unitOfWork.Rooms.Delete(id);
+                _unitOfWork.Commit();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public void Create(RoomApi room)
+        {
+            var Room = new Room()
+            {
+                RoomNo = room.RoomNo,
+                CategoryRoomId = room.CategoryRoomId,
+                Status = Status.Active
+            };
+            try
+            {
+                _unitOfWork.Rooms.Insert(Room);
                 _unitOfWork.Commit();
             }
             catch (Exception e)

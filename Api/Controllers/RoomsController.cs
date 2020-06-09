@@ -82,7 +82,6 @@ namespace Api.Controllers
             }
         }
 
-
         // GET: api/Rooms/5
         [HttpGet("GetEmptyRoom/{idCategoryRoom}")]
         public ActionResult<RoomMv> GetEmptyRoom(int idCategoryRoom)
@@ -118,7 +117,21 @@ namespace Api.Controllers
                 return NotFound();
             }
         }
-
+        // POST: api/Rooms
+        [HttpPost("RoomApi")]
+        public IActionResult Post([FromBody]RoomApi room)
+        {
+            try
+            {
+                new RoomDao(_unitOfWork, _mapper).Create(room);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
+        }
         // PUT: api/Rooms/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] RoomMv room)
@@ -134,8 +147,6 @@ namespace Api.Controllers
                 return NotFound();
             }
         }
-
-
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]

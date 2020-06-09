@@ -6,7 +6,7 @@ namespace Data.Enums
 {
     public enum Status
     {
-        Active,
-        UnActive
+        Active =1,
+        UnActive =0
     }
 }

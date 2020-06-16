@@ -1,5 +1,4 @@
 using Api.Configuration;
-
 using AutoMapper;
 using Data.EF;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using UnitOfWork;
+using Newtonsoft.Json;
 
 namespace Api
 {

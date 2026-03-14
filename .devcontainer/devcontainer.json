@@ -1,0 +1,23 @@
+{
+    "name": "HotelAspnetCore Dev Environment",
+    "image": "mcr.microsoft.com/devcontainers/dotnet:9.0",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-dotnettools.csharp",
+                "ms-azuretools.vscode-docker",
+                "mtxr.sqltools",
+                "mtxr.sqltools-driver-pg"
+            ]
+        }
+    },
+    "postCreateCommand": "dotnet restore HotelAspnetCore.sln",
+    "remoteUser": "vscode",
+    "features": {
+        "ghcr.io/devcontainers/features/dotnet:2": {
+            "version": "9.0"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    "forwardPorts": [5000, 4434, 5432]
+}

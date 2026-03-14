@@ -37,7 +37,7 @@ namespace Api
             services.AddMvc();
 
             services.AddDbContext<HotelDataContext>(config =>
-                config.UseSqlServer(Configuration.GetConnectionString("HotelDB")));
+                config.UseNpgsql(Configuration.GetConnectionString("HotelDB")));
 
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 

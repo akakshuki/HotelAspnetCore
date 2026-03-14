@@ -1,21 +1,26 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+
+#nullable disable
 
 namespace Data.Migrations
 {
-    public partial class firstdata : Migration
+    /// <inheritdoc />
+    public partial class InitialPostgres : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "CategoryRooms",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 200, nullable: false),
-                    Price = table.Column<decimal>(nullable: false, defaultValue: 0m),
-                    Description = table.Column<string>(nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    Price = table.Column<decimal>(type: "numeric", nullable: false, defaultValue: 0m),
+                    Description = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,9 +31,9 @@ namespace Data.Migrations
                 name: "CategoryService",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 300, nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,13 +44,13 @@ namespace Data.Migrations
                 name: "Guest",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(maxLength: 300, nullable: false),
-                    LastName = table.Column<string>(maxLength: 300, nullable: false),
-                    Phone = table.Column<string>(maxLength: 10, nullable: false),
-                    Email = table.Column<string>(unicode: false, maxLength: 300, nullable: false),
-                    IdentityNo = table.Column<string>(maxLength: 9, nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FirstName = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
+                    LastName = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
+                    Phone = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    Email = table.Column<string>(type: "character varying(300)", unicode: false, maxLength: 300, nullable: false),
+                    IdentityNo = table.Column<string>(type: "character varying(9)", maxLength: 9, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -56,11 +61,11 @@ namespace Data.Migrations
                 name: "Rooms",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoomNo = table.Column<string>(maxLength: 3, nullable: false),
-                    CategoryRoomId = table.Column<int>(nullable: false),
-                    Status = table.Column<int>(nullable: false, defaultValue: 0)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    RoomNo = table.Column<string>(type: "character varying(3)", maxLength: 3, nullable: false),
+                    CategoryRoomId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false, defaultValue: 1)
                 },
                 constraints: table =>
                 {
@@ -77,13 +82,13 @@ namespace Data.Migrations
                 name: "Services",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 100, nullable: false),
-                    Description = table.Column<string>(nullable: false),
-                    CategoryServiceId = table.Column<int>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false, defaultValue: 0m),
-                    Status = table.Column<int>(nullable: false, defaultValue: 0)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    CategoryServiceId = table.Column<int>(type: "integer", nullable: false),
+                    Price = table.Column<decimal>(type: "numeric", nullable: false, defaultValue: 0m),
+                    Status = table.Column<int>(type: "integer", nullable: false, defaultValue: 1)
                 },
                 constraints: table =>
                 {
@@ -100,16 +105,16 @@ namespace Data.Migrations
                 name: "Bookings",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    GuestId = table.Column<int>(nullable: false),
-                    BookingDate = table.Column<DateTime>(nullable: false),
-                    CheckIn = table.Column<DateTime>(nullable: false),
-                    CheckOut = table.Column<DateTime>(nullable: false),
-                    DurationStay = table.Column<int>(nullable: false, defaultValue: 0),
-                    SecretCode = table.Column<string>(maxLength: 6, nullable: true),
-                    Status = table.Column<int>(maxLength: 20, nullable: false, defaultValue: 0),
-                    Amount = table.Column<decimal>(nullable: false, defaultValue: 0m)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    GuestId = table.Column<int>(type: "integer", nullable: false),
+                    BookingDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CheckIn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CheckOut = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DurationStay = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
+                    SecretCode = table.Column<string>(type: "character varying(6)", maxLength: 6, nullable: true),
+                    Status = table.Column<int>(type: "integer", maxLength: 20, nullable: false, defaultValue: 0),
+                    Amount = table.Column<decimal>(type: "numeric", nullable: false, defaultValue: 0m)
                 },
                 constraints: table =>
                 {
@@ -126,10 +131,10 @@ namespace Data.Migrations
                 name: "BookRooms",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BookingId = table.Column<int>(nullable: false),
-                    RoomId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    BookingId = table.Column<int>(type: "integer", nullable: false),
+                    RoomId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -152,13 +157,13 @@ namespace Data.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderNo = table.Column<Guid>(nullable: false, defaultValue: new Guid("00000000-0000-0000-0000-000000000000")),
-                    BookingId = table.Column<int>(nullable: false),
-                    Payment = table.Column<int>(nullable: false),
-                    DateCreate = table.Column<DateTime>(nullable: false),
-                    TotalAmount = table.Column<decimal>(nullable: false, defaultValue: 0m)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    OrderNo = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("00000000-0000-0000-0000-000000000000")),
+                    BookingId = table.Column<int>(type: "integer", nullable: false),
+                    Payment = table.Column<int>(type: "integer", nullable: false),
+                    DateCreate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    TotalAmount = table.Column<decimal>(type: "numeric", nullable: false, defaultValue: 0m)
                 },
                 constraints: table =>
                 {
@@ -175,13 +180,13 @@ namespace Data.Migrations
                 name: "OrderDetails",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderId = table.Column<int>(nullable: false),
-                    ServiceId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false, defaultValue: 0),
-                    Amount = table.Column<decimal>(nullable: false, defaultValue: 0m),
-                    DateRequest = table.Column<DateTime>(nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    OrderId = table.Column<int>(type: "integer", nullable: false),
+                    ServiceId = table.Column<int>(type: "integer", nullable: false),
+                    Quantity = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
+                    Amount = table.Column<decimal>(type: "numeric", nullable: false, defaultValue: 0m),
+                    DateRequest = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -241,6 +246,7 @@ namespace Data.Migrations
                 column: "CategoryServiceId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

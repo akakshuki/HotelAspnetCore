@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Security.Cryptography;
 using System.Text;
@@ -8,7 +8,7 @@ namespace MoMoConnector.Model
 {
     public class MoMoSecurity
     {
-        private static RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider();
+
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public MoMoSecurity()
         {

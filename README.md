@@ -1,66 +1,95 @@
-# Development Environment Instructions
+# HotelAspnetCore
 
-Welcome to the `HotelAspnetCore` project! This project has been upgraded to `.NET 9` and contains a Docker-based development environment to make onboarding easy. 
+A hotel management system built with **ASP.NET Core 9.0**, **Entity Framework Core 9**, and **PostgreSQL 16**. Fully dockerized with a one-command startup.
 
-## Prerequisites
+---
 
-To run this project, ensure you have the following installed on your host machine:
-1. [Docker Desktop](https://www.docker.com/products/docker-desktop)
-2. [Visual Studio Code](https://code.visualstudio.com/)
-3. The [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension for VS Code.
+## Architecture
 
-## Getting Started
+| Component | Description |
+|-----------|-------------|
+| **Api** | REST API (Swagger at `/swagger`) — rooms, bookings, services, guests, checkout |
+| **AppAdmin** | MVC admin dashboard — consumes the Api via HTTP |
+| **Data** | EF Core data layer (entities, configs, migrations, DbContext) |
+| **UnitOfWork** | Repository + Unit of Work abstraction |
+| **MomoConnector** | MoMo payment gateway integration |
 
-Because this project uses DevContainers, you **do not** need to install the .NET SDK or PostgreSQL locally on your host machine. Everything is contained within Docker.
+---
 
-### 1. Open in DevContainer (VS Code)
-
-1. Open the project folder `HotelAspnetCore` in VS Code.
-2. An alert should appear in the bottom-right corner: `Folder contains a Dev Container configuration file. Reopen to develop in a container.`
-3. Click **"Reopen in Container"**. 
-   *(Alternatively, open the Command Palette `Ctrl+Shift+P` or `Cmd+Shift+P` and type `Dev Containers: Reopen in Container`)*.
-4. VS Code will now build the `.NET 9` Docker image and start the `postgres` database in the background using `docker-compose`. This might take a few minutes the first time.
-5. Once complete, you will have a full `.NET 9` development environment in your VS Code terminal, with all necessary C# extensions already installed.
-
-### 2. Database (PostgreSQL)
-
-The database runs automatically alongside the application container. The details for the PostgreSQL database (as defined in `docker-compose.yml`) are as follows:
-
-- **Host**: `db` (when connecting from the .NET backend inside the DevContainer), or `localhost:5432` from your host machine.
-- **Port**: `5432`
-- **Username**: `postgres`
-- **Password**: `postgrespassword`
-- **Database Name**: `hoteldb`
-
-Example Connection String for `appsettings.json` (inside the DevContainer):
-```json
-"ConnectionStrings": {
-  "DefaultConnection": "Host=db;Port=5432;Database=hoteldb;Username=postgres;Password=postgrespassword"
-}
-```
-
-### 3. Build and Run the App
-
-Open a terminal inside the VS Code DevContainer (it should open in `/workspace`):
+## Quick Start (Docker Compose)
 
 ```bash
-# To build all projects
-dotnet build HotelAspnetCore.sln
-
-# To navigate to the Api project and run it
-cd Api
-dotnet run
+# Start everything: PostgreSQL + Api + AppAdmin
+docker compose up --build -d
 ```
 
-If Entity Framework migrations need to be applied (e.g., if you are setting up the project for the first time):
+| Service | URL |
+|---------|-----|
+| **Api** (Swagger) | http://localhost:5010/swagger |
+| **AppAdmin** | http://localhost:4434 |
+| **PostgreSQL** | localhost:5432 |
+
+To stop:
 ```bash
-# Ensure EF tools are installed globally
+docker compose down
+```
+
+---
+
+## Development (DevContainer)
+
+### Prerequisites
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- [VS Code](https://code.visualstudio.com/) + [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension
+
+### Steps
+1. Open the project in VS Code
+2. Click **"Reopen in Container"** (or `Cmd+Shift+P` → `Dev Containers: Reopen in Container`)
+3. Run both apps:
+   ```bash
+   ./run-all.sh
+   ```
+
+---
+
+## Database
+
+- **Provider**: Npgsql (PostgreSQL)
+- **Connection string**: `Host=db;Port=5432;Database=hoteldb;Username=postgres;Password=postgrespassword`
+
+### Migrations
+```bash
+# Install EF tools (first time only)
 dotnet tool install --global dotnet-ef
 
-# Update your database schema
+# Create a new migration
+dotnet ef migrations add <MigrationName> --project Data --startup-project Api
+
+# Apply migrations
 dotnet ef database update --project Data --startup-project Api
 ```
 
-## Stopping the Environment
+---
 
-When you are done, simply close the VS Code window, or open the Command Palette and select `Dev Containers: Close Dev Container`. The docker-compose services will stop until you reopen the container.
+## Project Structure
+
+```
+HotelAspnetCore/
+├── Api/                    # REST API
+├── AppAdmin/               # MVC Admin Dashboard
+├── Data/                   # EF Core (Entities, Configs, Migrations)
+├── UnitOfWork/             # Repository + UoW pattern
+├── MomoConnector/          # MoMo payment integration
+├── Dockerfile              # Multi-stage build (targets: api, appadmin)
+├── docker-compose.yml      # PostgreSQL + Api + AppAdmin
+├── .devcontainer/          # VS Code DevContainer config
+├── run-all.sh              # Dev helper script
+├── AGENTS.md               # AI agent instructions
+└── HotelAspnetCore.sln     # Solution file
+```
+
+---
+
+## For AI Agents
+
+See [AGENTS.md](AGENTS.md) for detailed architecture, coding conventions, and step-by-step guides for common tasks like adding entities, API endpoints, and admin pages.
